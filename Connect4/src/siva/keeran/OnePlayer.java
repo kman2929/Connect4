@@ -22,42 +22,42 @@ public class OnePlayer extends JPanel{
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
 	
-	//JButton btnone;
-	//JButton btntwo;
-	//JButton btnthree;
-	//JButton btnfour;
-	//JButton btnfive;
-	//JButton btnsix;
-	//JButton btnseven;
+	JButton btnone;
+	JButton btntwo;
+	JButton btnthree;
+	JButton btnfour;
+	JButton btnfive;
+	JButton btnsix;
+	JButton btnseven;
 	JButton[] btns = new JButton[7];
 	JLabel[][] lblboard = new JLabel[7][7];
 	
 	public OnePlayer(){
 		
-		/*setBackground(Color.white);
+		setBackground(Color.white);
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
 		setPreferredSize(new Dimension(700, 500));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		
-		btnone = new JButton("");
+		btnone = new JButton("1");
 		btnone.addActionListener(new ButtonListener());
 		
-		btntwo = new JButton("");
+		btntwo = new JButton("2");
 		btntwo.addActionListener(new ButtonListener());
 		
-		btnthree = new JButton("");
+		btnthree = new JButton("3");
 		btnthree.addActionListener(new ButtonListener());
 		
-		btnfour = new JButton("");
+		btnfour = new JButton("4");
 		btnfour.addActionListener(new ButtonListener());
 		
-		btnfive = new JButton("");
+		btnfive = new JButton("5");
 		btnfive.addActionListener(new ButtonListener());
 		
-		btnsix = new JButton("");
+		btnsix = new JButton("6");
 		btnsix.addActionListener(new ButtonListener());
 		
-		btnseven = new JButton("");
+		btnseven = new JButton("7");
 		btnseven.addActionListener(new ButtonListener());
 		
 		add(btnone);
@@ -67,7 +67,7 @@ public class OnePlayer extends JPanel{
 		add(btnfive);
 		add(btnsix);
 		add(btnseven);
-		*/
+		
 		
 	}
 	
@@ -75,7 +75,7 @@ public class OnePlayer extends JPanel{
 		
 		public void actionPerformed(ActionEvent event){
 			
-			/*if(event.getSource() == btnone){
+			if(event.getSource() == btnone){
 
 			}
 			if(event.getSource() == btntwo){
@@ -95,7 +95,7 @@ public class OnePlayer extends JPanel{
 			}
 			if(event.getSource() == btnseven){
 
-			}*/
+			}
 			
 		}
 		

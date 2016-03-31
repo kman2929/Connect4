@@ -35,6 +35,8 @@ public class TwoPlayer extends JPanel{
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
 		setPreferredSize(new Dimension(700, 500));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
+		
+		
 	}
 
 }

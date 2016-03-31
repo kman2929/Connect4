@@ -61,33 +61,30 @@ public class MainPanel extends JPanel {
 				Oneplayerframe.setFocusable(true);
 				Oneplayerframe.setResizable(true);
 				Oneplayerframe.setVisible(true);
-				Menuframe.dispose();
+				Connect4Driver.hideFrame();
 			}
 			if(event.getSource() == btntwoplayer){
-				JFrame Twoplayerframe = new JFrame("Connect4-OnePlayer");
+				JFrame Twoplayerframe = new JFrame("Connect4-TwoPlayer");
 				Twoplayerframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Twoplayerframe.getContentPane().add(new OnePlayer());
 				Twoplayerframe.pack();
 				Twoplayerframe.setFocusable(true);
 				Twoplayerframe.setResizable(true);
 				Twoplayerframe.setVisible(true);
-				Menuframe.dispose();
+				Connect4Driver.hideFrame();
 			}
 			if(event.getSource() == btninstructions){
-				JFrame Instructionsframe = new JFrame("Connect4-OnePlayer");
+				JFrame Instructionsframe = new JFrame("Connect4-Instructions");
 				Instructionsframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Instructionsframe.getContentPane().add(new OnePlayer());
 				Instructionsframe.pack();
 				Instructionsframe.setFocusable(true);
 				Instructionsframe.setResizable(true);
 				Instructionsframe.setVisible(true);
-				Menuframe.dispose();
+				Connect4Driver.hideFrame();
 			}
 			
 		}
 		
-		private void close(){
-			Menuframe.dispose();
-		}
 	}
 }

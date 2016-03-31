@@ -7,16 +7,21 @@ import javax.swing.*;
 
 public class Connect4Driver {
 
+	static JFrame frame = new JFrame("Connect4");
+	
 	public static void main(String[] args) {
 		
-		JFrame Menuframe = new JFrame("Connect4");
-		Menuframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Menuframe.getContentPane().add(new MainPanel());
-		Menuframe.pack();
-		Menuframe.setFocusable(true);
-		Menuframe.setResizable(true);
-		Menuframe.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(new MainPanel());
+		frame.pack();
+		frame.setFocusable(true);
+		frame.setResizable(true);
+		frame.setVisible(true);
 
+	}
+	
+	public static void hideFrame() {
+		frame.setVisible(false);
 	}
 
 }
