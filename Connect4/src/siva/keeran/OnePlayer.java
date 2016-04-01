@@ -22,6 +22,8 @@ public class OnePlayer extends JPanel{
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
 	
+
+	JButton[] btns = new JButton[7];
 	JButton btnone;
 	JButton btntwo;
 	JButton btnthree;
@@ -29,7 +31,7 @@ public class OnePlayer extends JPanel{
 	JButton btnfive;
 	JButton btnsix;
 	JButton btnseven;
-	JButton[] btns = new JButton[7];
+
 	JLabel[][] lblboard = new JLabel[7][7];
 	
 	public OnePlayer(){
@@ -39,34 +41,44 @@ public class OnePlayer extends JPanel{
 		setPreferredSize(new Dimension(700, 500));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		
-		btnone = new JButton("1");
+		btnone = new JButton("");
+		btns[0] = btnone;
 		btnone.addActionListener(new ButtonListener());
 		
 		btntwo = new JButton("2");
+		btns[1] = btntwo;
 		btntwo.addActionListener(new ButtonListener());
 		
 		btnthree = new JButton("3");
+		btns[2] = btnthree;
 		btnthree.addActionListener(new ButtonListener());
 		
 		btnfour = new JButton("4");
+		btns[3] = btnfour;
 		btnfour.addActionListener(new ButtonListener());
 		
 		btnfive = new JButton("5");
+		btns[4] = btnfive;
 		btnfive.addActionListener(new ButtonListener());
 		
 		btnsix = new JButton("6");
+		btns[5] = btnsix;
 		btnsix.addActionListener(new ButtonListener());
 		
 		btnseven = new JButton("7");
+		btns[6] = btnseven;
 		btnseven.addActionListener(new ButtonListener());
 		
-		add(btnone);
+		/*add(btnone);
 		add(btntwo);
 		add(btnthree);
 		add(btnfour);
 		add(btnfive);
 		add(btnsix);
-		add(btnseven);
+		add(btnseven);*/
+		for(int i = 0; i < 7; i++){
+			add(btns[i]);
+		};
 		
 		
 	}
