@@ -47,6 +47,7 @@ public class Instructions extends JPanel{
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 1;
+		c.weightx = 1.0;
 		c.weighty = 1.0;
 		c.ipady = 10;
 		c.ipadx = 200;

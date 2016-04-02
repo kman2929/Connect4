@@ -34,6 +34,7 @@ public class TwoPlayer extends JPanel{
 
 	JLabel[][] lblboard = new JLabel[7][7];
 	
+	
 	public TwoPlayer(){
 		
 		setBackground(Color.white);
@@ -41,7 +42,10 @@ public class TwoPlayer extends JPanel{
 		setPreferredSize(new Dimension(700, 500));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		
-		btnone = new JButton("");
+		setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
+		btnone = new JButton("1");
 		btns[0] = btnone;
 		btnone.addActionListener(new ButtonListener());
 		
@@ -69,16 +73,43 @@ public class TwoPlayer extends JPanel{
 		btns[6] = btnseven;
 		btnseven.addActionListener(new ButtonListener());
 		
-		/*add(btnone);
-		add(btntwo);
-		add(btnthree);
-		add(btnfour);
-		add(btnfive);
-		add(btnsix);
-		add(btnseven);*/
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		c.anchor = GridBagConstraints.NORTHWEST;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1;
+		c.weighty = 1;
 		for(int i = 0; i < 7; i++){
-			add(btns[i]);
-		};
+			add(btns[i],c);
+			c.gridy = 1;
+			for(int z = 0; z < 7; z++){
+				
+			}
+			c.gridx++;
+			c.gridy = 0;
+		}
+		
+		for(int row = 0; row < 7; row++){
+			for(int col = 0; col < 7; col++){
+				lblboard[row][col] = new JLabel("Yes");
+				lblboard[row][col].setOpaque(true);
+				lblboard[row][col].setBackground(Color.CYAN);
+				lblboard[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+
+			}
+		}
+		
+		for(int row = 0; row < 7; row++){
+			c.gridx = 0;
+			c.gridy = 1;
+			for(int col = 0; col < 7; col++){
+				add(lblboard[row][col],c);
+				c.gridy++;
+			}
+			c.gridx++;
+			c.gridy = 0;
+		}
 		
 		
 	}

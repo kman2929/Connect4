@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import javax.swing.*;
 
 
-public class Connect4Driver {
+public class GameDriver {
 
 	static JFrame frame = new JFrame("Connect4");
 	

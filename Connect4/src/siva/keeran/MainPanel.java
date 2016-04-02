@@ -75,7 +75,7 @@ public class MainPanel extends JPanel {
 				Oneplayerframe.setFocusable(true);
 				Oneplayerframe.setResizable(true);
 				Oneplayerframe.setVisible(true);
-				Connect4Driver.hideFrame();
+				GameDriver.hideFrame();
 			}
 			if(event.getSource() == btntwoplayer){
 				JFrame Twoplayerframe = new JFrame("Connect4-TwoPlayer");
@@ -85,7 +85,7 @@ public class MainPanel extends JPanel {
 				Twoplayerframe.setFocusable(true);
 				Twoplayerframe.setResizable(true);
 				Twoplayerframe.setVisible(true);
-				Connect4Driver.hideFrame();
+				GameDriver.hideFrame();
 			}
 			if(event.getSource() == btninstructions){
 				JFrame Instructionsframe = new JFrame("Connect4-Instructions");
@@ -95,7 +95,7 @@ public class MainPanel extends JPanel {
 				Instructionsframe.setFocusable(true);
 				Instructionsframe.setResizable(true);
 				Instructionsframe.setVisible(true);
-				Connect4Driver.hideFrame();
+				GameDriver.hideFrame();
 			}
 			
 		}
