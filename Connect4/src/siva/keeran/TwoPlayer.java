@@ -77,7 +77,7 @@ public class TwoPlayer extends JPanel{
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.NORTHWEST;
-		c.fill = GridBagConstraints.HORIZONTAL;
+		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1;
 		c.weighty = 1;
 		for(int i = 0; i < 7; i++){
@@ -100,8 +100,8 @@ public class TwoPlayer extends JPanel{
 			}
 		}
 		
+		c.gridx = 0;
 		for(int row = 0; row < 7; row++){
-			c.gridx = 0;
 			c.gridy = 1;
 			for(int col = 0; col < 7; col++){
 				add(lblboard[row][col],c);

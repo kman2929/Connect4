@@ -75,7 +75,7 @@ public class OnePlayer extends JPanel{
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.NORTHWEST;
-		c.fill = GridBagConstraints.HORIZONTAL;
+		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1;
 		c.weighty = 1;
 		for(int i = 0; i < 7; i++){
@@ -87,6 +87,28 @@ public class OnePlayer extends JPanel{
 			c.gridx++;
 			c.gridy = 0;
 		}
+		
+		for(int row = 0; row < 7; row++){
+			for(int col = 0; col < 7; col++){
+				lblboard[row][col] = new JLabel("Yes");
+				lblboard[row][col].setOpaque(true);
+				lblboard[row][col].setBackground(Color.CYAN);
+				lblboard[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+
+			}
+		}
+		
+		c.gridx = 0;
+		for(int row = 0; row < 7; row++){
+			c.gridy = 1;
+			for(int col = 0; col < 7; col++){
+				add(lblboard[row][col],c);
+				c.gridy++;
+			}
+			c.gridx++;
+			c.gridy = 0;
+		}
+		
 		
 		
 	}
