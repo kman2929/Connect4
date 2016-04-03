@@ -10,7 +10,9 @@ import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -37,9 +39,9 @@ public class TwoPlayer extends JPanel{
 	
 	public TwoPlayer(){
 		
-		setBackground(Color.white);
+		setBackground(Color.blue);
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
-		setPreferredSize(new Dimension(700, 500));
+		setPreferredSize(new Dimension(1000, 700));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		
 		setLayout(new GridBagLayout());
@@ -93,8 +95,8 @@ public class TwoPlayer extends JPanel{
 		for(int row = 0; row < 7; row++){
 			for(int col = 0; col < 7; col++){
 				lblboard[row][col] = new JLabel("Yes");
-				lblboard[row][col].setOpaque(true);
-				lblboard[row][col].setBackground(Color.CYAN);
+				//lblboard[row][col].setOpaque(true);
+				///lblboard[row][col].setBackground(Color.CYAN);
 				lblboard[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 
 			}
@@ -144,5 +146,16 @@ public class TwoPlayer extends JPanel{
 		
 
 	}
+	
+	/*public class CreateCustomColor extends Applet{
+		 
+        public void paint(Graphics g) {
+
+                Color customColor = new Color(10,10,255);
+               
+                this.setForeground(customColor);
+                g.drawString("This is a custom RGB color", 10, 50);
+        }
+}*/
 
 }

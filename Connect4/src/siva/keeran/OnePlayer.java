@@ -31,14 +31,16 @@ public class OnePlayer extends JPanel{
 	JButton btnfive;
 	JButton btnsix;
 	JButton btnseven;
+	JLabel  lblyellowchip;
+
 
 	JLabel[][] lblboard = new JLabel[7][7];
 	
 	public OnePlayer(){
 		
-		setBackground(Color.white);
+		setBackground(Color.blue);
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
-		setPreferredSize(new Dimension(700, 500));
+		setPreferredSize(new Dimension(1000, 700));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		
 		setLayout(new GridBagLayout());
@@ -88,11 +90,13 @@ public class OnePlayer extends JPanel{
 			c.gridy = 0;
 		}
 		
+		
+		lblyellowchip = new JLabel(new ImageIcon("Connect4Bluechip.png"));
 		for(int row = 0; row < 7; row++){
 			for(int col = 0; col < 7; col++){
 				lblboard[row][col] = new JLabel("Yes");
-				lblboard[row][col].setOpaque(true);
-				lblboard[row][col].setBackground(Color.CYAN);
+				//lblboard[row][col].setOpaque(true);
+				//lblboard[row][col].setBackground(Color.CYAN);
 				lblboard[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 
 			}
@@ -102,7 +106,8 @@ public class OnePlayer extends JPanel{
 		for(int row = 0; row < 7; row++){
 			c.gridy = 1;
 			for(int col = 0; col < 7; col++){
-				add(lblboard[row][col],c);
+				//add(lblboard[row][col],c);
+				this.add(lblyellowchip);
 				c.gridy++;
 			}
 			c.gridx++;
@@ -142,6 +147,10 @@ public class OnePlayer extends JPanel{
 		}
 		
 
+	}
+	
+	public void paintComponents(Graphics g){
+		//yellowchip.paintIcon(this.g,x,y)
 	}
 
 }
