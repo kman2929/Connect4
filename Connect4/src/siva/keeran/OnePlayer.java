@@ -24,13 +24,7 @@ public class OnePlayer extends JPanel{
 	
 
 	JButton[] btns = new JButton[7];
-	JButton btnone;
-	JButton btntwo;
-	JButton btnthree;
-	JButton btnfour;
-	JButton btnfive;
-	JButton btnsix;
-	JButton btnseven;
+
 	JLabel  lblyellowchip;
 
 
