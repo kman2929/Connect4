@@ -123,7 +123,13 @@ public class TwoPlayerPanel extends JPanel{
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == quitbtn){
-				//MainMenuPanel.disposeOfTwoPlayerframe();
+				JFrame Rematchframe = new JFrame("Connect4");
+				Rematchframe.getContentPane().add(new MainMenuPanel());
+				Rematchframe.pack();
+				Rematchframe.setLocationRelativeTo(null);
+				Rematchframe.setFocusable(true);
+				Rematchframe.setResizable(true);
+				Rematchframe.setVisible(true);
 				
 			}
 			

@@ -37,7 +37,7 @@ public class InstructionsPanel extends JPanel{
 		
 		btnback = new JButton("Back");
 		btnback.addActionListener(new ButtonListener());
-		btnback.setBounds(80, 200, 100, 30);
+		btnback.setBounds(250, 170, 150, 30);
 		
 		this.add(btnback);
 		this.add(backgroundimg);
@@ -50,7 +50,8 @@ public class InstructionsPanel extends JPanel{
 		public void actionPerformed(ActionEvent event){
 			
 			if(event.getSource() == btnback){
-				
+				MainMenuPanel.hideInstructionFrame();
+				GameDriver.appearframe();
 			}
 		}
 

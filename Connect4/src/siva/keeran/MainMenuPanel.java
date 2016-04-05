@@ -30,6 +30,10 @@ public class MainMenuPanel extends JPanel {
 	
 	ImageIcon backgroundicon;
 	JLabel backgroundimg;
+	
+	static JFrame Oneplayerframe = new JFrame("Connect4-OnePlayer");
+	static JFrame Twoplayerframe = new JFrame("Connect4-TwoPlayer");
+	static JFrame Instructionsframe = new JFrame("Connect4-Instructions");
 
 	public MainMenuPanel(){
 		
@@ -67,10 +71,10 @@ public class MainMenuPanel extends JPanel {
 			
 			if(event.getSource() == btnoneplayer){
 				
-				JFrame Oneplayerframe = new JFrame("Connect4-OnePlayer");
 				Oneplayerframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Oneplayerframe.getContentPane().add(new OnePlayerPanel());
 				Oneplayerframe.pack();
+				Oneplayerframe.setLocationRelativeTo(null);
 				Oneplayerframe.setFocusable(true);
 				Oneplayerframe.setResizable(true);
 				Oneplayerframe.setVisible(true);
@@ -78,10 +82,10 @@ public class MainMenuPanel extends JPanel {
 			}
 			else if(event.getSource() == btntwoplayer){
 				
-				JFrame Twoplayerframe = new JFrame("Connect4-TwoPlayer");
 				Twoplayerframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Twoplayerframe.getContentPane().add(new TwoPlayerPanel());
 				Twoplayerframe.pack();
+				Twoplayerframe.setLocationRelativeTo(null);
 				Twoplayerframe.setFocusable(true);
 				Twoplayerframe.setResizable(true);
 				Twoplayerframe.setVisible(true);
@@ -89,10 +93,10 @@ public class MainMenuPanel extends JPanel {
 			}
 			else if(event.getSource() == btninstructions){
 				
-				JFrame Instructionsframe = new JFrame("Connect4-Instructions");
 				Instructionsframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Instructionsframe.getContentPane().add(new InstructionsPanel());
 				Instructionsframe.pack();
+				Instructionsframe.setLocationRelativeTo(null);
 				Instructionsframe.setFocusable(true);
 				Instructionsframe.setResizable(true);
 				Instructionsframe.setVisible(true);
@@ -101,6 +105,11 @@ public class MainMenuPanel extends JPanel {
 		
 		}
 		
+		
+	}
+	
+	public static void hideInstructionFrame() {
+		Instructionsframe.setVisible(false);
 	}
 	
 }

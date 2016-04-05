@@ -14,6 +14,7 @@ public class GameDriver {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(new MainMenuPanel());
 		frame.pack();
+		frame.setLocationRelativeTo(null);
 		frame.setFocusable(true);
 		frame.setResizable(true);
 		frame.setVisible(true);
