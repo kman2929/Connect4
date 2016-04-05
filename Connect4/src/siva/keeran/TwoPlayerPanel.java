@@ -40,7 +40,7 @@ public class TwoPlayerPanel extends JPanel{
 				lbls[row][col] = new JLabel();
 				lbls[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 				lbls[row][col].setOpaque(true);
-				lbls[row][col].setBackground(new Color(100,149,237));
+				lbls[row][col].setBackground(new Color(13,71,161));
 				add(lbls[row][col]);
 			}
 		}
@@ -62,23 +62,22 @@ public class TwoPlayerPanel extends JPanel{
 	}
 
 	public void drawBoard(int chosencol){
-		for(int x = 0 ; x < 6 ; x++){
-			if((x==0)&&board[x][chosencol].isOccupied()){
-				JOptionPane.showMessageDialog(null, "This row is full");
-			}
-			else if((x==5) && !board[x][chosencol].isOccupied()){
+		for(int x = 5 ; x >= 0 ; x--){
+			if(false == board[x][chosencol].isOccupied()){
 				board[x][chosencol].setOccupied();
-				//ImageIcon chip = new ImageIcon(getClass().getResource("/resources/backgroundpic.jpg"));
-				//lbls[x][chosencol].setIcon(chip);
-				
-				lbls[x][chosencol].setText("Yes"+x);
+				ImageIcon chip = new ImageIcon(getClass().getResource("/resources/Connect4RedButton.png"));
+				lbls[x][chosencol].setIcon(chip);
+				//JOptionPane.showMessageDialog(null, "This column is full");
+			}
+			else if((x == 0) && true == board[x][chosencol].isOccupied()){
+				JOptionPane.showMessageDialog(null, "This column is full");
 			}
 			else if(board[x][chosencol].isOccupied()){
-				board[x-1][chosencol].setOccupied();
-				//ImageIcon chip = new ImageIcon(getClass().getResource("/resources/backgroundpic.jpg"));
-				//lbls[x-1][chosencol].setIcon(chip);
+				board[x][chosencol].setOccupied();
+				ImageIcon chip = new ImageIcon(getClass().getResource("/resources/Connect4RedButton.png"));
+				lbls[x][chosencol].setIcon(chip);
 				
-				lbls[x-1][chosencol].setText("Yes"+x);
+				//lbls[x][chosencol].setText("Yes"+x);
 				break;
 			}
 		}
@@ -86,41 +85,41 @@ public class TwoPlayerPanel extends JPanel{
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
-			
+			int inputtedcol;
 			if(event.getSource() == btns[0]){
 				
-				int inputtedcol = 0;
+				inputtedcol = 0;
 				drawBoard(inputtedcol);
 				
 			}
 			else if(event.getSource() == btns[1]){
 				
-				int inputtedcol = 1;
+				inputtedcol = 1;
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == btns[2]){
 				
-				int inputtedcol = 2;
+				inputtedcol = 2;
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == btns[3]){
 				
-				int inputtedcol = 3;
+				inputtedcol = 3;
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == btns[4]){
 				
-				int inputtedcol = 4;
+				inputtedcol = 4;
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == btns[5]){
 				
-				int inputtedcol = 5;
+				inputtedcol = 5;
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == btns[6]){
 				
-				int inputtedcol = 6;
+				inputtedcol = 6;
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == quitbtn){
