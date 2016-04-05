@@ -17,7 +17,7 @@ import java.io.IOException;
 
 import java.io.File;
 
-public class OnePlayer extends JPanel{
+public class OnePlayerPanel extends JPanel{
 	
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
@@ -30,7 +30,7 @@ public class OnePlayer extends JPanel{
 
 	JLabel[][] lblboard = new JLabel[7][7];
 	
-	public OnePlayer(){
+	public OnePlayerPanel(){
 		
 		setBackground(Color.blue);
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
@@ -40,33 +40,7 @@ public class OnePlayer extends JPanel{
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
-		btnone = new JButton("1");
-		btns[0] = btnone;
-		btnone.addActionListener(new ButtonListener());
-		
-		btntwo = new JButton("2");
-		btns[1] = btntwo;
-		btntwo.addActionListener(new ButtonListener());
-		
-		btnthree = new JButton("3");
-		btns[2] = btnthree;
-		btnthree.addActionListener(new ButtonListener());
-		
-		btnfour = new JButton("4");
-		btns[3] = btnfour;
-		btnfour.addActionListener(new ButtonListener());
-		
-		btnfive = new JButton("5");
-		btns[4] = btnfive;
-		btnfive.addActionListener(new ButtonListener());
-		
-		btnsix = new JButton("6");
-		btns[5] = btnsix;
-		btnsix.addActionListener(new ButtonListener());
-		
-		btnseven = new JButton("7");
-		btns[6] = btnseven;
-		btnseven.addActionListener(new ButtonListener());
+
 		
 		c.gridx = 0;
 		c.gridy = 0;
@@ -112,7 +86,7 @@ public class OnePlayer extends JPanel{
 		
 	}
 	
-	private class ButtonListener implements ActionListener {
+	/*private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
 			
@@ -141,7 +115,7 @@ public class OnePlayer extends JPanel{
 		}
 		
 
-	}
+	}*/
 	
 	public void paintComponents(Graphics g){
 		//yellowchip.paintIcon(this.g,x,y)

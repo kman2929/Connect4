@@ -17,7 +17,7 @@ import java.io.IOException;
 
 import java.io.File;
 
-public class Instructions extends JPanel{
+public class InstructionsPanel extends JPanel{
 	
 	final int FONT_SIZE = 48;
 	int ROWS = 2, COLS = 1;
@@ -25,7 +25,7 @@ public class Instructions extends JPanel{
 	JLabel lblinstructions;
 	JButton btnback;
 	
-	public Instructions(){
+	public InstructionsPanel(){
 		
 		setBackground(Color.white);
 		//setLayout(new GridLayout(ROWS, COLS, 0, 0));
