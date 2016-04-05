@@ -20,40 +20,28 @@ import java.io.File;
 public class InstructionsPanel extends JPanel{
 	
 	final int FONT_SIZE = 48;
-	int ROWS = 2, COLS = 1;
-	
-	JLabel lblinstructions;
 	JButton btnback;
+	ImageIcon backgroundicon;
+	JLabel backgroundimg;
 	
 	public InstructionsPanel(){
 		
-		setBackground(Color.white);
-		//setLayout(new GridLayout(ROWS, COLS, 0, 0));
+		setLayout(null);
 		setPreferredSize(new Dimension(500, 200));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
+
 		
-		setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		
-		lblinstructions = new JLabel();
-		lblinstructions.setText("<Insert Instructions>");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;
-		c.gridy = 0;
-		add(lblinstructions, c);
+		backgroundicon = new ImageIcon(getClass().getResource("/resources/Connect4Instructions.jpg"));
+		backgroundimg = new JLabel(backgroundicon);
+		backgroundimg.setBounds(0,0,500,200);
 		
 		btnback = new JButton("Back");
 		btnback.addActionListener(new ButtonListener());
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;
-		c.gridy = 1;
-		c.weightx = 1.0;
-		c.weighty = 1.0;
-		c.ipady = 10;
-		c.ipadx = 200;
-		c.anchor = GridBagConstraints.PAGE_END;
-		c.gridwidth = 2;
-		add(btnback,c);
+		btnback.setBounds(80, 200, 100, 30);
+		
+		this.add(btnback);
+		this.add(backgroundimg);
+		
 		
 	}
 	
