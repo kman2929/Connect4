@@ -23,6 +23,7 @@ public class OnePlayerPanel extends JPanel{
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		
 		quitbtn = new JButton("Quit");
+		quitbtn.addActionListener(new ButtonListener());
 		quitbtn.setBorder(BorderFactory.createLineBorder(new Color(0,0,0)));
 		for(int i = 0; i < 7; i++){
 			
@@ -98,6 +99,9 @@ public class OnePlayerPanel extends JPanel{
 		}
 		
 
+	}
+	public static void closeOptionFrame() {
+		Optionframe.dispose();
 	}
 
 }

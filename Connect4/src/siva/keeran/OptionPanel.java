@@ -43,13 +43,15 @@ public class OptionPanel extends JPanel{
 		
 		public void actionPerformed(ActionEvent event){
 			if(event.getSource() == btnquit){
-				MainMenuPanel.closeOptionFrame();
+				OnePlayerPanel.closeOptionFrame();
+				TwoPlayerPanel.closeOptionFrame();
 				MainMenuPanel.closeOnePlayerFrame();
 				MainMenuPanel.closeTwoPlayerFrame();
 				GameDriver.appearFrame();
 			}
 			if(event.getSource() == btnresume){
-				MainMenuPanel.closeOptionFrame();
+				OnePlayerPanel.closeOptionFrame();
+				TwoPlayerPanel.closeOptionFrame();
 			}
 			
 		}

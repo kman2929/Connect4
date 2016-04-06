@@ -35,7 +35,6 @@ public class MainMenuPanel extends JPanel {
 	static JFrame Oneplayerframe = new JFrame("Connect4-OnePlayer");
 	static JFrame Twoplayerframe = new JFrame("Connect4-TwoPlayer");
 	static JFrame Instructionsframe = new JFrame("Connect4-Instructions");
-	static JFrame Optionframe = new JFrame("Connect4");
 
 	public MainMenuPanel(){
 		
@@ -90,21 +89,13 @@ public class MainMenuPanel extends JPanel {
 			}
 			else if(event.getSource() == btntwoplayer){
 				
-				/*Twoplayerframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				Twoplayerframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				Twoplayerframe.getContentPane().add(new TwoPlayerPanel());
 				Twoplayerframe.pack();
 				Twoplayerframe.setLocationRelativeTo(null);
 				Twoplayerframe.setFocusable(true);
 				Twoplayerframe.setResizable(true);
-				Twoplayerframe.setVisible(true);*/
-				Optionframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				Optionframe.getContentPane().add(new OptionPanel());
-				Optionframe.pack();
-				Optionframe.setLocationRelativeTo(null);
-				Optionframe.setFocusable(true);
-				Optionframe.setResizable(true);
-				Optionframe.setVisible(true);
-				
+				Twoplayerframe.setVisible(true);
 				GameDriver.hideFrame();
 			}
 			else if(event.getSource() == btninstructions){
@@ -130,9 +121,6 @@ public class MainMenuPanel extends JPanel {
 	
 	public static void hideInstructionFrame() {
 		Instructionsframe.setVisible(false);
-	}
-	public static void closeOptionFrame() {
-		Optionframe.dispose();
 	}
 	public static void closeTwoPlayerFrame(){
 		Twoplayerframe.dispose();
