@@ -9,7 +9,7 @@ public class OnePlayerPanel extends JPanel{
 	
 	final int FONT_SIZE = 24;
 	int ROWS = 9, COLS = 7;
-	
+	static JFrame Optionframe = new JFrame("Connect4");
 	JButton[] btns = new JButton[7];
 	JLabel[][] lbls = new JLabel[7][7];
 	Chip[][] board = new Chip[7][7];
@@ -85,7 +85,13 @@ public class OnePlayerPanel extends JPanel{
 
 			}
 			else if(event.getSource() == quitbtn){
-				//MainMenuPanel.disposeOfTwoPlayerframe();
+				Optionframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				Optionframe.getContentPane().add(new OptionPanel());
+				Optionframe.pack();
+				Optionframe.setLocationRelativeTo(null);
+				Optionframe.setFocusable(true);
+				Optionframe.setResizable(true);
+				Optionframe.setVisible(true);
 				
 			}
 			

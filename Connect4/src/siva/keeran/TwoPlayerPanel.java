@@ -4,12 +4,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.awt.Dimension;
+import java.awt.Rectangle;
 
 public class TwoPlayerPanel extends JPanel{
 	
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
-	
+	static JFrame Optionframe = new JFrame("Connect4");
 	JButton[] btns = new JButton[7];
 	JLabel[][] lbls = new JLabel[6][7];
 	Chip[][] board = new Chip[6][7];
@@ -97,45 +99,49 @@ public class TwoPlayerPanel extends JPanel{
 				inputtedcol = 1;
 				drawBoard(inputtedcol);
 			}
-			else if(event.getSource() == btns[2]){
+			if(event.getSource() == btns[2]){
 				
 				inputtedcol = 2;
 				drawBoard(inputtedcol);
 			}
-			else if(event.getSource() == btns[3]){
+			if(event.getSource() == btns[3]){
 				
 				inputtedcol = 3;
 				drawBoard(inputtedcol);
 			}
-			else if(event.getSource() == btns[4]){
+			if(event.getSource() == btns[4]){
 				
 				inputtedcol = 4;
 				drawBoard(inputtedcol);
 			}
-			else if(event.getSource() == btns[5]){
+			if(event.getSource() == btns[5]){
 				
 				inputtedcol = 5;
 				drawBoard(inputtedcol);
 			}
-			else if(event.getSource() == btns[6]){
+			if(event.getSource() == btns[6]){
 				
 				inputtedcol = 6;
 				drawBoard(inputtedcol);
 			}
-			else if(event.getSource() == quitbtn){
-				JFrame Rematchframe = new JFrame("Connect4");
-				Rematchframe.getContentPane().add(new MainMenuPanel());
-				Rematchframe.pack();
-				Rematchframe.setLocationRelativeTo(null);
-				Rematchframe.setFocusable(true);
-				Rematchframe.setResizable(true);
-				Rematchframe.setVisible(true);
+			if(event.getSource() == quitbtn){
+				Optionframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				Optionframe.getContentPane().add(new OptionPanel());
+				Optionframe.pack();
+				Optionframe.setLocationRelativeTo(null);
+				Optionframe.setFocusable(true);
+				Optionframe.setResizable(true);
+				Optionframe.setVisible(true);
+				
 				
 			}
 			
 		}
 		
 
+	}
+	public static void closeOptionFrame() {
+		Optionframe.dispose();
 	}
 
 }

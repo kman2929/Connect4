@@ -25,8 +25,11 @@ public class GameDriver {
 		frame.setVisible(false);
 	}
 	//doesn't work
-	public static void appearframe(){
+	public static void appearFrame(){
 		frame.setVisible(true);
+	}
+	public static void closeFrame(){
+		frame.dispose();
 	}
 
 }

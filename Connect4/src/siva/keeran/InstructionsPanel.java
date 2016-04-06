@@ -51,7 +51,7 @@ public class InstructionsPanel extends JPanel{
 			
 			if(event.getSource() == btnback){
 				MainMenuPanel.hideInstructionFrame();
-				GameDriver.appearframe();
+				GameDriver.appearFrame();
 			}
 		}
 
