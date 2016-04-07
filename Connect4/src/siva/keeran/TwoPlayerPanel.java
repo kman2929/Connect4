@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.Dimension;
-import java.awt.Rectangle;
 
 public class TwoPlayerPanel extends JPanel{
 	

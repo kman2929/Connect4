@@ -3,19 +3,8 @@ package siva.keeran;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
-import java.util.Random;
-import java.util.Scanner;
-
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import java.io.File;
 
 public class InstructionsPanel extends JPanel{
 	

@@ -4,21 +4,8 @@ package siva.keeran;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
-import java.util.Random;
-import java.util.Scanner;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.File;
-import java.awt.Dimension;
-import java.awt.Rectangle;
 
 public class MainMenuPanel extends JPanel {
 	
