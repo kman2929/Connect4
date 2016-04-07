@@ -54,7 +54,7 @@ public class OnePlayerPanel extends JPanel{
 		
 		for(int h = 0 ; h < 7 ; h++){
 			for(int q = 0 ; q < 7 ; q++){
-				board[h][q] = new Chip(false, -1);
+				board[h][q] = new Chip(false, ChipColour.NONE);
 			}
 		}
 		
