@@ -10,12 +10,14 @@ public class TwoPlayerPanel extends JPanel{
 	
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
-	static JFrame Optionframe = new JFrame("Connect4");
+	
+	private JLabel[][] lbls = new JLabel[6][7];
+	private Chip[][] board = new Chip[6][7];
+	
 	JButton[] btns = new JButton[7];
-	JLabel[][] lbls = new JLabel[6][7];
-	Chip[][] board = new Chip[6][7];
 	JLabel[] fillerlbls = new JLabel[6];
 	JButton quitbtn;
+	static JFrame Optionframe = new JFrame("Connect4");
 	
 	//111,11
 	
@@ -42,7 +44,7 @@ public class TwoPlayerPanel extends JPanel{
 				lbls[row][col] = new JLabel();
 				lbls[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 				lbls[row][col].setOpaque(true);
-				lbls[row][col].setBackground(new Color(100,149,237));
+				lbls[row][col].setBackground(new Color(13,71,161));
 				add(lbls[row][col]);
 			}
 		}
@@ -60,11 +62,9 @@ public class TwoPlayerPanel extends JPanel{
 			}
 		} 
 		
-		ChipColour firstcolchip = setFir
-		
 	}
 
-	
+	/*
 	public ChipColour setFirstcolchipPlayer(){
 		
 		boolean validAnswerProvided = false;
@@ -86,28 +86,32 @@ public class TwoPlayerPanel extends JPanel{
 		}	
 	}
 	
+	*/
 	
-	public void drawBoard(int chosencol){
-		for(int x = 5 ; x >= 0 ; x--){
-			if(x==0 && board[x][chosencol].isOccupied()){
-				JOptionPane.showMessageDialog(null, "This row is full");
-			}
-			else if(x==5 && !board[x][chosencol].isOccupied()){
-				board[x][chosencol].setOccupied();
-				//board[x-1][chosencol].setColour();
-				//ImageIcon chip = new ImageIcon(getClass().getResource("/resources/backgroundpic.jpg"));
-				//lbls[x][chosencol].setIcon(chip);
+	public void drawBoard(int chosencol) {
+
+		int row = 5;
+		if (false == board[row][chosencol].isOccupied()) {
+			board[row][chosencol].setOccupied();
+			lbls[row][chosencol].setText("Yes" + row);
+		}
+			else {
+			while (row >= 0 && !board[row][chosencol].isOccupied()) {
+				lbls[row][chosencol].setText("NO" + row);
+				row--;
+				// if(row==0 && !board[row][chosencol].isOccupied()){
+				// JOptionPane.showMessageDialog(null, "This row is full");
+				// }
 				
-				lbls[x][chosencol].setText("Yes"+x);
-			}
-			else if(board[x][chosencol].isOccupied()){
-				board[x-1][chosencol].setOccupied();
-				//board[x-1][chosencol].setColour();
-				//ImageIcon chip = new ImageIcon(getClass().getResource("/resources/backgroundpic.jpg"));
-				//lbls[x-1][chosencol].setIcon(chip);
-				
-				lbls[x-1][chosencol].setText("Yes"+x);
-				break;
+				if (!board[row][chosencol].isOccupied()) {
+					board[row][chosencol].setOccupied();
+
+					// board[x-1][chosencol].setColour();
+					// ImageIcon chip = new
+					// ImageIcon(getClass().getResource("/resources/backgroundpic.jpg"));
+					// lbls[x][chosencol].setIcon(chip);
+					lbls[row][chosencol].setText("Yes" + row);
+				}
 			}
 		}
 	}
