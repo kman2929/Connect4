@@ -29,6 +29,7 @@ public class TwoPlayerPanel extends JPanel{
 		quitbtn = new JButton("Quit");
 		quitbtn.setBorder(BorderFactory.createLineBorder(new Color(0,0,0)));
 		quitbtn.addActionListener(new ButtonListener());
+		
 		for(int i = 0; i < 7; i++){
 			
 			btns[i] = new JButton(String.valueOf(i+1));
@@ -36,6 +37,7 @@ public class TwoPlayerPanel extends JPanel{
 			btns[i].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 			add(btns[i]);
 		}
+		
 		for(int row = 0; row < 6; row++){
 			
 			for(int col = 0; col < 7; col++){
@@ -62,7 +64,8 @@ public class TwoPlayerPanel extends JPanel{
 		} 
 		
 		
-		
+		Color redChipcol = new Color();
+		Color yellowChipcol = new Color(); 
 		//will fill these in, fixed the methods too but not sure if they work until drawBoard works
 		//i think there will be some errors tho
 		/*
