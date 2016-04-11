@@ -8,6 +8,8 @@ import javax.swing.*;
 
 public class TwoPlayerPanel extends JPanel{
 	
+	static JFrame Optionframe = new JFrame("Connect4");
+	
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
 	
@@ -17,7 +19,6 @@ public class TwoPlayerPanel extends JPanel{
 	JButton[] btns = new JButton[7];
 	JLabel[] fillerlbls = new JLabel[6];
 	JButton quitbtn;
-	static JFrame Optionframe = new JFrame("Connect4");
 	
 	public TwoPlayerPanel(){
 
