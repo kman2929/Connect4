@@ -22,6 +22,7 @@ public class MainMenuPanel extends JPanel {
 	static JFrame Oneplayerframe = new JFrame("Connect4-OnePlayer");
 	static JFrame Twoplayerframe = new JFrame("Connect4-TwoPlayer");
 	static JFrame Instructionsframe = new JFrame("Connect4-Instructions");
+	static JFrame PickChipColourframe = new JFrame("Connect4-Choose Chip Colour");
 
 	public MainMenuPanel(){
 		
@@ -84,6 +85,15 @@ public class MainMenuPanel extends JPanel {
 				Twoplayerframe.setResizable(true);
 				Twoplayerframe.setVisible(true);
 				GameDriver.hideFrame();
+				
+				PickChipColourframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				PickChipColourframe.getContentPane().add(new TwoPlayerPanel());
+				PickChipColourframe.pack();
+				PickChipColourframe.setLocationRelativeTo(null);
+				PickChipColourframe.setFocusable(true);
+				PickChipColourframe.setResizable(true);
+				PickChipColourframe.setVisible(true);
+				
 			}
 			else if(event.getSource() == btninstructions){
 				

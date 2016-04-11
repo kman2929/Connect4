@@ -19,12 +19,10 @@ public class TwoPlayerPanel extends JPanel{
 	JButton quitbtn;
 	static JFrame Optionframe = new JFrame("Connect4");
 	
-	//111,11
-	
 	public TwoPlayerPanel(){
 
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
-		setPreferredSize(new Dimension(700, 500));
+		setPreferredSize(new Dimension(500, 700));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		
 		quitbtn = new JButton("Quit");
@@ -62,100 +60,87 @@ public class TwoPlayerPanel extends JPanel{
 			}
 		} 
 		
-	}
-
-	/*
-	public ChipColour setFirstcolchipPlayer(){
 		
-		boolean validAnswerProvided = false;
 		
-		while(!validAnswerProvided){
-			try{
-				String colour = JOptionPane.showInputDialog(null, "Please enter Please enter -1 for the yellow chip and 0 for the red chip.");
-			
-				if(colour == null){
-					break; 
+		//will fill these in, fixed the methods too but not sure if they work until drawBoard works
+		//i think there will be some errors tho
+		/*
+		for(int col = 0 ; col < 7 ; col++){
+			for(int row = 5 ; row >= 3 ; row--){
+				
+				if(checkForVerticalCombo(row, col, ChipColour.RED)){
+				
 				}
+				else if(checkForVerticalCombo(row, col, ChipColour.YELLOW)){
+					
+				}
+			} 
+		}
+		
+		for(int row = 5 ; row >= 0 ; row--){
+			for(int col = 0 ; col <= 3 ; col++){
 				
-				return
+				if(checkForHoizontalCombo(row, col, ChipColour.RED)){
+					
+				} else if(checkForHoizontalCombo(row, col, ChipColour.YELLOW)){
+					
+				}
+			}
+		}
+		
+		for(int row = 5 ; row >= 0 ; row--){
+			for(int col = 0; col <=3 ; col++){
 				
+				if(checkForDiagonalCombo(row, col, ChipColour.RED, 1)){
+					
+				} else if(checkForDiagonalCombo(row, col, ChipColour.YELLOW, -1)){
+					
+				}
 			}
-			catch(Exception e) {
-				JOptionPane.showMessageDialog(null, "You did not enter a valid integer. Please enter -1 for the yellow chip and 0 for the red chip.");
-			}
-		}	
+		}
+		*/
 	}
-	
-	*/
 	
 	public void drawBoard(int chosencol) {
-
+		
 		int row = 5;
-		if (false == board[row][chosencol].isOccupied()) {
+		if(board[row][chosencol].isOccupied()){
+			while(row>0 && board[row][chosencol].isOccupied()){
+				row--;
+			}
 			board[row][chosencol].setOccupied();
 			lbls[row][chosencol].setText("Yes" + row);
 		}
-			else {
-			while (row >= 0 && !board[row][chosencol].isOccupied()) {
-				lbls[row][chosencol].setText("NO" + row);
-				row--;
-				// if(row==0 && !board[row][chosencol].isOccupied()){
-				// JOptionPane.showMessageDialog(null, "This row is full");
-				// }
-				
-				if (!board[row][chosencol].isOccupied()) {
-					board[row][chosencol].setOccupied();
+		else {
+			board[row][chosencol].setOccupied();
+			lbls[row][chosencol].setText("Yes" + row);
+		}
+		
+	}
 
-					// board[x-1][chosencol].setColour();
-					// ImageIcon chip = new
-					// ImageIcon(getClass().getResource("/resources/backgroundpic.jpg"));
-					// lbls[x][chosencol].setIcon(chip);
-					lbls[row][chosencol].setText("Yes" + row);
-				}
+	public boolean checkForVerticalCombo(int x, int y, ChipColour col) {
+
+		for (int i = 0; i < 4; i++) {
+			if (!board[x + i][y].getColour().equals(col)) {
+				return false;
 			}
-		}
+		} return true;
 	}
 	
-	public boolean checkForVerticalCombo(){
-		for(int col = 0 ; col < 7 ; col++){
-			for(int row = 5 ; row >= 3 ; row--){
-				if(board[row][col].isOccupied()&&board[row+1][col].isOccupied()&&board[row+2][col].isOccupied()&&board[row+3][col].isOccupied()){
-					if(board[row][col].getColour()==board[row+1][col].getColour()&&board[row+1][col].getColour()==board[row+2][col].getColour()
-							&&board[row+2][col].getColour()==board[row+3][col].getColour()){
-						return true;
-					}
-				}
+	public boolean checkForHoizontalCombo(int x, int y, ChipColour col){
+		for (int i = 0; i < 4; i++) {
+			if (!board[x][y+i].getColour().equals(col)) {
+				return false;
 			}
-		}
-		return false;
+		} return true;
 	}
 	
-	public boolean checkForHoizontalCombo(){
-		for(int row = 5 ; row >= 0 ; row--){
-			for(int col = 0 ; col <= 3 ; col++){
-				if(board[row][col].isOccupied()&&board[row][col+1].isOccupied()&&board[row][col+2].isOccupied()&&board[row][col+3].isOccupied()){
-					if(board[row][col].getColour()==board[row][col+1].getColour()&&board[row][col+1].getColour()==board[row][col+2].getColour()
-							&&board[row][col+2].getColour()==board[row][col+3].getColour()){
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
-	
-	public boolean checkForDiagonalCombo(){
-		for(int row = 5 ; row >= 0 ; row--){
-			for(int col = 0 ; col <= 3 ; col++){
-				if(board[row][col].isOccupied()&&board[row][col+1].isOccupied()&&board[row][col+2].isOccupied()&&board[row][col+3].isOccupied()){
-					if(board[row][col].getColour()==board[row][col+1].getColour()&&board[row][col+1].getColour()==board[row][col+2].getColour()
-							&&board[row][col+2].getColour()==board[row][col+3].getColour()){
-						return true;
-					}
-				}
-			}
-		}
-		return false;	
+	public boolean checkForDiagonalCombo(int x, int y, ChipColour col, int direction){
+	       for(int i = 0; i<4; i++) {
+	           if(!board[x+i][y + direction].getClass().equals(col)) {
+	               return false;
+	           }
+	       } return true;
 	}
 	
 	private class ButtonListener implements ActionListener {
@@ -172,6 +157,7 @@ public class TwoPlayerPanel extends JPanel{
 				
 				int inputtedcol = 1;
 				drawBoard(inputtedcol);
+				
 			}
 			else if(event.getSource() == btns[2]){
 				

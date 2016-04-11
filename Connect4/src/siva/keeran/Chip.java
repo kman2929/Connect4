@@ -2,8 +2,8 @@ package siva.keeran;
 
 public class Chip {
 	
-	private static boolean occupied;
-	private static ChipColour colour;
+	private boolean occupied;
+	private ChipColour colour;
 	
 	public Chip(boolean status, ChipColour col){
 		this.occupied = status;

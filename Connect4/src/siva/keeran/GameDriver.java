@@ -1,7 +1,5 @@
 package siva.keeran;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
 import javax.swing.*;
 
 
@@ -24,7 +22,7 @@ public class GameDriver {
 	public static void hideFrame() {
 		frame.setVisible(false);
 	}
-	//doesn't work
+	
 	public static void appearFrame(){
 		frame.setVisible(true);
 	}
