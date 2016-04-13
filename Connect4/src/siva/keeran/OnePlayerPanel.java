@@ -9,7 +9,10 @@ public class OnePlayerPanel extends JPanel{
 	
 	final int FONT_SIZE = 24;
 	int ROWS = 9, COLS = 7;
-	static JFrame Optionframe = new JFrame("Connect4");
+	
+	static JFrame optionFrame = new JFrame ("Connect4");
+	static JFrame winningFrame = new JFrame ("Connect4");
+	
 	JButton[] btns = new JButton[7];
 	JLabel[][] lbls = new JLabel[7][7];
 	Chip[][] board = new Chip[7][7];
@@ -86,13 +89,13 @@ public class OnePlayerPanel extends JPanel{
 
 			}
 			else if(event.getSource() == quitbtn){
-				Optionframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				Optionframe.getContentPane().add(new OptionPanel());
-				Optionframe.pack();
-				Optionframe.setLocationRelativeTo(null);
-				Optionframe.setFocusable(true);
-				Optionframe.setResizable(true);
-				Optionframe.setVisible(true);
+				optionFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				optionFrame.getContentPane().add(new OptionPanel());
+				optionFrame.pack();
+				optionFrame.setLocationRelativeTo(null);
+				optionFrame.setFocusable(true);
+				optionFrame.setResizable(true);
+				optionFrame.setVisible(true);
 				
 			}
 			
@@ -101,10 +104,10 @@ public class OnePlayerPanel extends JPanel{
 
 	}
 	public static void closeOptionFrame() {
-		Optionframe.dispose();
+		optionFrame.dispose();
 	}
 	public static void closeWinningFrame() {
-		Optionframe.dispose();
+		winningFrame.dispose();
 	}
 
 }

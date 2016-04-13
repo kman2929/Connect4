@@ -8,8 +8,8 @@ import javax.swing.*;
 
 public class TwoPlayerPanel extends JPanel{
 	
-	static JFrame Optionframe = new JFrame("Connect4");
-	static JFrame Winningframe = new JFrame ("Connect4");
+	static JFrame optionFrame = new JFrame("Connect4");
+	static JFrame winningFrame = new JFrame ("Connect4");
 	
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
@@ -34,7 +34,6 @@ public class TwoPlayerPanel extends JPanel{
 		
 		for(int i = 0; i < 7; i++){
 			
-			btns[i].setOpaque(true);
 			btns[i] = new JButton(String.valueOf(i+1));
 			btns[i].addActionListener(new ButtonListener());
 			btns[i].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
@@ -66,23 +65,22 @@ public class TwoPlayerPanel extends JPanel{
 			}
 		} 
 		
+		Color redChipcol = new Color(244,67,54);
+		Color yellowChipcol = new Color(255,235,59); 
 		
 		
 		
 		
-		
-		
-		Winningframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		Winningframe.getContentPane().add(new WinningPanel());
-		Winningframe.pack();
-		Winningframe.setLocationRelativeTo(null);
-		Winningframe.setFocusable(true);
-		Winningframe.setResizable(true);
-		Winningframe.setVisible(true);
-		
-		
-		//Color redChipcol = new Color();
-		//Color yellowChipcol = new Color(); 
+		/*
+		winningFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		winningFrame.getContentPane().add(new WinningPanel());
+		winningFrame.pack();
+		winningFrame.setLocationRelativeTo(null);
+		winningFrame.setFocusable(true);
+		winningFrame.setResizable(true);
+		winningFrame.setVisible(true);
+		*/
+	
 		
 		//will fill these in, fixed the methods too but not sure if they work until drawBoard works
 		//i think there will be some errors tho
@@ -234,13 +232,13 @@ public class TwoPlayerPanel extends JPanel{
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == quitbtn){
-				Optionframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				Optionframe.getContentPane().add(new OptionPanel());
-				Optionframe.pack();
-				Optionframe.setLocationRelativeTo(null);
-				Optionframe.setFocusable(true);
-				Optionframe.setResizable(true);
-				Optionframe.setVisible(true);
+				optionFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				optionFrame.getContentPane().add(new OptionPanel());
+				optionFrame.pack();
+				optionFrame.setLocationRelativeTo(null);
+				optionFrame.setFocusable(true);
+				optionFrame.setResizable(true);
+				optionFrame.setVisible(true);
 				
 			}
 			
@@ -249,10 +247,10 @@ public class TwoPlayerPanel extends JPanel{
 
 	}
 	public static void closeOptionFrame() {
-		Optionframe.dispose();
+		optionFrame.dispose();
 	}
 	public static void closeWinningFrame() {
-		Winningframe.dispose();
+		winningFrame.dispose();
 	}
 	public static void resetFrame(){
 		//I don't know how to do this 
