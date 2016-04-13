@@ -21,6 +21,11 @@ public class TwoPlayerPanel extends JPanel{
 	JLabel[] fillerlbls = new JLabel[6];
 	JButton quitbtn;
 	
+	Color firstPlayerChipCol;
+	Color secondPlayerChipCol;
+	Color currentChipCol;
+	Player currentPlayer;
+	
 	public TwoPlayerPanel(){
 
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
@@ -60,15 +65,15 @@ public class TwoPlayerPanel extends JPanel{
 		
 		for(int h = 0 ; h < 6 ; h++){
 			for(int q = 0 ; q < 7 ; q++){
-				board[h][q] = new Chip(false, ChipColour.NONE);
+				board[h][q] = new Chip(false, Player.NA);
 			}
 		} 
 		
-		Color redChipcol = new Color(244,67,54);
-		Color yellowChipcol = new Color(255,235,59); 
+		firstPlayerChipCol = PickChipColourPanel.getFirstPlayerColour();
+		secondPlayerChipCol = PickChipColourPanel.getSecondPlayerColour();
 		
-		
-		
+		currentChipCol = firstPlayerChipCol;
+		currentPlayer = Player.PlayerA;
 		
 		/*
 		winningFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -142,7 +147,7 @@ public class TwoPlayerPanel extends JPanel{
 
 		for (int h = 0; h < 6; h++) {
 			for (int q = 0; q < 7; q++) {
-				board[h][q] = new Chip(false, ChipColour.NONE);
+				board[h][q] = new Chip(false, Player.NA);
 			}
 		}
 	}
@@ -155,35 +160,65 @@ public class TwoPlayerPanel extends JPanel{
 				row--;
 			}
 			board[row][chosencol].setOccupied();
-			lbls[row][chosencol].setText("Yes" + row);
+			board[row][chosencol].setPlayer(currentPlayer);
+			lbls[row][chosencol].setBackground(currentChipCol);
+			
+			setCurrentPlayer();
+			setCurrentChipCol();
 		}
 		else {
 			board[row][chosencol].setOccupied();
-			lbls[row][chosencol].setText("Yes" + row);
+			board[row][chosencol].setPlayer(currentPlayer);
+			lbls[row][chosencol].setOpaque(true);
+			lbls[row][chosencol].setBackground(currentChipCol);
+			
+			setCurrentPlayer();
+			setCurrentChipCol();
 		}
 		
 	}
 
-	public boolean checkForVerticalCombo(int x, int y, ChipColour col) {
+	public void setCurrentChipCol(){
+		
+		if(currentChipCol == firstPlayerChipCol){
+			
+			currentChipCol = secondPlayerChipCol;
+		} else {
+			
+			currentChipCol = firstPlayerChipCol;
+		}
+	}
+	public void setCurrentPlayer(){
+		if(currentPlayer.equals(Player.PlayerA)){
+			
+			currentPlayer = Player.PlayerB;
+		} 
+		else {
+			
+			currentPlayer = Player.PlayerA;
+		}
+	}
+	
+	public boolean checkForVerticalCombo(int x, int y, Player player) {
 
 		for (int i = 0; i < 4; i++) {
-			if (!board[x + i][y].getColour().equals(col)) {
+			if (!board[x + i][y].getPlayer().equals(player)) {
 				return false;
 			}
 		} return true;
 	}
 	
-	public boolean checkForHoizontalCombo(int x, int y, ChipColour col){
+	public boolean checkForHoizontalCombo(int x, int y, Player player){
 		for (int i = 0; i < 4; i++) {
-			if (!board[x][y+i].getColour().equals(col)) {
+			if (!board[x][y+i].getPlayer().equals(player)) {
 				return false;
 			}
 		} return true;
 	}
 	
-	public boolean checkForDiagonalCombo(int x, int y, ChipColour col, int direction){
+	public boolean checkForDiagonalCombo(int x, int y, Player player, int direction){
 	       for(int i = 0; i<4; i++) {
-	           if(!board[x+i][y + direction].getClass().equals(col)) {
+	           if(!board[x+i][y + direction].getPlayer().equals(player)) {
 	               return false;
 	           }
 	       } return true;
@@ -242,8 +277,6 @@ public class TwoPlayerPanel extends JPanel{
 			}
 			
 		}
-		
-
 	}
 	public static void closeOptionFrame() {
 		optionFrame.dispose();
@@ -252,7 +285,10 @@ public class TwoPlayerPanel extends JPanel{
 		winningFrame.dispose();
 	}
 	public static void resetFrame(){
-		//I don't know how to do this 
+		
+		
+		
+		
 	}
 
 }

@@ -3,17 +3,17 @@ package siva.keeran;
 public class Chip {
 	
 	private boolean occupied;
-	private ChipColour colour;
+	private Player player;
 	
-	public Chip(boolean status, ChipColour col){
+	public Chip(boolean status, Player player){
 		this.occupied = status;
-		this.colour = col;
+		this.player = player ;
 	}
-	public ChipColour getColour(){
-		return colour;
+	public Player getPlayer(){
+		return player;
 	}
-	public void setColour(ChipColour col){
-		colour = col;
+	public void setPlayer(Player player){
+		this.player = player;
 	}
 	public void setOccupied(){
 		occupied = true;
