@@ -86,7 +86,7 @@ public class OnePlayerPanel extends JPanel{
 
 			}
 			else if(event.getSource() == quitbtn){
-				Optionframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				Optionframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				Optionframe.getContentPane().add(new OptionPanel());
 				Optionframe.pack();
 				Optionframe.setLocationRelativeTo(null);
@@ -101,6 +101,9 @@ public class OnePlayerPanel extends JPanel{
 
 	}
 	public static void closeOptionFrame() {
+		Optionframe.dispose();
+	}
+	public static void closeWinningFrame() {
 		Optionframe.dispose();
 	}
 

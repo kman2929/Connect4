@@ -9,6 +9,7 @@ import javax.swing.*;
 public class TwoPlayerPanel extends JPanel{
 	
 	static JFrame Optionframe = new JFrame("Connect4");
+	static JFrame Winningframe = new JFrame ("Connect4");
 	
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
@@ -25,6 +26,7 @@ public class TwoPlayerPanel extends JPanel{
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
 		setPreferredSize(new Dimension(500, 700));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
+		setBackground(Color.BLUE);
 		
 		quitbtn = new JButton("Quit");
 		quitbtn.setBorder(BorderFactory.createLineBorder(new Color(0,0,0)));
@@ -32,6 +34,7 @@ public class TwoPlayerPanel extends JPanel{
 		
 		for(int i = 0; i < 7; i++){
 			
+			btns[i].setOpaque(true);
 			btns[i] = new JButton(String.valueOf(i+1));
 			btns[i].addActionListener(new ButtonListener());
 			btns[i].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
@@ -44,7 +47,7 @@ public class TwoPlayerPanel extends JPanel{
 			
 				lbls[row][col] = new JLabel();
 				lbls[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
-				lbls[row][col].setOpaque(true);
+				lbls[row][col].setOpaque(false);
 				lbls[row][col].setBackground(new Color(13,71,161));
 				add(lbls[row][col]);
 			}
@@ -64,8 +67,23 @@ public class TwoPlayerPanel extends JPanel{
 		} 
 		
 		
-		Color redChipcol = new Color();
-		Color yellowChipcol = new Color(); 
+		
+		
+		
+		
+		
+		Winningframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		Winningframe.getContentPane().add(new WinningPanel());
+		Winningframe.pack();
+		Winningframe.setLocationRelativeTo(null);
+		Winningframe.setFocusable(true);
+		Winningframe.setResizable(true);
+		Winningframe.setVisible(true);
+		
+		
+		//Color redChipcol = new Color();
+		//Color yellowChipcol = new Color(); 
+		
 		//will fill these in, fixed the methods too but not sure if they work until drawBoard works
 		//i think there will be some errors tho
 		/*
@@ -103,6 +121,33 @@ public class TwoPlayerPanel extends JPanel{
 			}
 		}
 		*/
+	}
+
+	public void reset() {
+		for (int row = 0; row < 6; row++) {
+
+			for (int col = 0; col < 7; col++) {
+
+				lbls[row][col] = new JLabel();
+				lbls[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
+				lbls[row][col].setOpaque(true);
+				lbls[row][col].setBackground(new Color(2, 119, 189));
+				add(lbls[row][col]);
+			}
+		}
+
+		for (int t = 0; t < 6; t++) {
+			fillerlbls[t] = new JLabel();
+			add(fillerlbls[t]);
+		}
+
+		add(quitbtn);
+
+		for (int h = 0; h < 6; h++) {
+			for (int q = 0; q < 7; q++) {
+				board[h][q] = new Chip(false, ChipColour.NONE);
+			}
+		}
 	}
 	
 	public void drawBoard(int chosencol) {
@@ -189,7 +234,7 @@ public class TwoPlayerPanel extends JPanel{
 				drawBoard(inputtedcol);
 			}
 			else if(event.getSource() == quitbtn){
-				Optionframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				Optionframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				Optionframe.getContentPane().add(new OptionPanel());
 				Optionframe.pack();
 				Optionframe.setLocationRelativeTo(null);
@@ -205,6 +250,12 @@ public class TwoPlayerPanel extends JPanel{
 	}
 	public static void closeOptionFrame() {
 		Optionframe.dispose();
+	}
+	public static void closeWinningFrame() {
+		Winningframe.dispose();
+	}
+	public static void resetFrame(){
+		//I don't know how to do this 
 	}
 
 }

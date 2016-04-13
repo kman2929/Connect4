@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-
-
 public class OptionPanel extends JPanel{
 	JButton btnquit;
 	JButton btnresume;
@@ -17,7 +15,7 @@ public class OptionPanel extends JPanel{
 		setLayout(null);
 		setPreferredSize(new Dimension(500, 200));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
-		setBackground(new Color(13,71,161));
+		setBackground(new Color(2,119,189));
 		
 		lblmsg = new JLabel("Are you sure you want to quit?");
 	    lblmsg.setFont(new Font("Arial", Font.BOLD, 22));
@@ -45,8 +43,8 @@ public class OptionPanel extends JPanel{
 			if(event.getSource() == btnquit){
 				OnePlayerPanel.closeOptionFrame();
 				TwoPlayerPanel.closeOptionFrame();
-				MainMenuPanel.closeOnePlayerFrame();
-				MainMenuPanel.closeTwoPlayerFrame();
+				MainMenuPanel.closeOneplayerFrame();
+				MainMenuPanel.closeTwoplayerFrame();
 				GameDriver.appearFrame();
 			}
 			if(event.getSource() == btnresume){

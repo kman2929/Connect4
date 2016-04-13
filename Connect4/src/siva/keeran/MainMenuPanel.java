@@ -19,10 +19,10 @@ public class MainMenuPanel extends JPanel {
 	ImageIcon backgroundicon;
 	JLabel backgroundimg;
 	
-	static JFrame Oneplayerframe = new JFrame("Connect4-OnePlayer");
-	static JFrame Twoplayerframe = new JFrame("Connect4-TwoPlayer");
-	static JFrame Instructionsframe = new JFrame("Connect4-Instructions");
-	static JFrame PickChipColourframe = new JFrame("Connect4-Choose Chip Colour");
+	static JFrame oneplayerFrame = new JFrame("Connect4-OnePlayer");
+	static JFrame twoplayerFrame = new JFrame("Connect4-TwoPlayer");
+	static JFrame instructionsFrame = new JFrame("Connect4-Instructions");
+	static JFrame pickChipColourFrame = new JFrame("Connect4-Choose Chip Colour");
 
 	public MainMenuPanel(){
 		
@@ -66,44 +66,45 @@ public class MainMenuPanel extends JPanel {
 			
 			if(event.getSource() == btnoneplayer){
 				
-				Oneplayerframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				Oneplayerframe.getContentPane().add(new OnePlayerPanel());
-				Oneplayerframe.pack();
-				Oneplayerframe.setLocationRelativeTo(null);
-				Oneplayerframe.setFocusable(true);
-				Oneplayerframe.setResizable(true);
-				Oneplayerframe.setVisible(true);
+				oneplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				oneplayerFrame.getContentPane().add(new OnePlayerPanel());
+				oneplayerFrame.pack();
+				oneplayerFrame.setLocationRelativeTo(null);
+				oneplayerFrame.setFocusable(true);
+				oneplayerFrame.setResizable(true);
+				oneplayerFrame.setVisible(true);
 				GameDriver.hideFrame();
 			}
 			else if(event.getSource() == btntwoplayer){
 				
-				Twoplayerframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				Twoplayerframe.getContentPane().add(new TwoPlayerPanel());
-				Twoplayerframe.pack();
-				Twoplayerframe.setLocationRelativeTo(null);
-				Twoplayerframe.setFocusable(true);
-				Twoplayerframe.setResizable(true);
-				Twoplayerframe.setVisible(true);
+				twoplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				twoplayerFrame.getContentPane().add(new TwoPlayerPanel());
+				twoplayerFrame.pack();
+				twoplayerFrame.setLocationRelativeTo(null);
+				twoplayerFrame.setFocusable(true);
+				twoplayerFrame.setResizable(true);
+				twoplayerFrame.setVisible(true);
 				GameDriver.hideFrame();
 				
-				PickChipColourframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				PickChipColourframe.getContentPane().add(new TwoPlayerPanel());
-				PickChipColourframe.pack();
-				PickChipColourframe.setLocationRelativeTo(null);
-				PickChipColourframe.setFocusable(true);
-				PickChipColourframe.setResizable(true);
-				PickChipColourframe.setVisible(true);
+				pickChipColourFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				pickChipColourFrame.getContentPane().add(new PickChipColourPanel());
+				pickChipColourFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+				pickChipColourFrame.pack();
+				pickChipColourFrame.setLocationRelativeTo(null);
+				pickChipColourFrame.setFocusable(true);
+				pickChipColourFrame.setResizable(true);
+				pickChipColourFrame.setVisible(true);
 				
 			}
 			else if(event.getSource() == btninstructions){
 				
-				Instructionsframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				Instructionsframe.getContentPane().add(new InstructionsPanel());
-				Instructionsframe.pack();
-				Instructionsframe.setLocationRelativeTo(null);
-				Instructionsframe.setFocusable(true);
-				Instructionsframe.setResizable(true);
-				Instructionsframe.setVisible(true);
+				instructionsFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				instructionsFrame.getContentPane().add(new InstructionsPanel());
+				instructionsFrame.pack();
+				instructionsFrame.setLocationRelativeTo(null);
+				instructionsFrame.setFocusable(true);
+				instructionsFrame.setResizable(true);
+				instructionsFrame.setVisible(true);
 				GameDriver.hideFrame();
 			}
 			
@@ -117,13 +118,17 @@ public class MainMenuPanel extends JPanel {
 	}
 	
 	public static void hideInstructionFrame() {
-		Instructionsframe.setVisible(false);
+		instructionsFrame.setVisible(false);
 	}
-	public static void closeTwoPlayerFrame(){
-		Twoplayerframe.dispose();
+	public static void closeTwoplayerFrame(){
+		twoplayerFrame.dispose();
 	}
-	public static void closeOnePlayerFrame(){
-		Oneplayerframe.dispose();
+	public static void closeOneplayerFrame(){
+		oneplayerFrame.dispose();
+	}
+	public static void closePickChipColourFrame(){
+		pickChipColourFrame.dispose();
 	}
 	
+
 }
