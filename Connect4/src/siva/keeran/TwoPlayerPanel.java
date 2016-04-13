@@ -8,15 +8,15 @@ import javax.swing.*;
 
 public class TwoPlayerPanel extends JPanel{
 	
-	static JFrame optionFrame = new JFrame("Connect4");
-	static JFrame winningFrame = new JFrame ("Connect4");
+	static JFrame optionFrame = new JFrame("Connect4-End Game?");
+	static JFrame winningFrame = new JFrame ("Connect4-Game Over");
 	
 	final int FONT_SIZE = 24;
 	int ROWS = 8, COLS = 7;
-	
-	private JLabel[][] lbls = new JLabel[6][7];
+
 	private Chip[][] board = new Chip[6][7];
 	
+	JLabel[][] lbls = new JLabel[6][7];
 	JButton[] btns = new JButton[7];
 	JLabel[] fillerlbls = new JLabel[6];
 	JButton quitbtn;
@@ -26,7 +26,6 @@ public class TwoPlayerPanel extends JPanel{
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
 		setPreferredSize(new Dimension(500, 700));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
-		setBackground(Color.BLUE);
 		
 		quitbtn = new JButton("Quit");
 		quitbtn.setBorder(BorderFactory.createLineBorder(new Color(0,0,0)));
@@ -46,8 +45,8 @@ public class TwoPlayerPanel extends JPanel{
 			
 				lbls[row][col] = new JLabel();
 				lbls[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
-				lbls[row][col].setOpaque(false);
-				lbls[row][col].setBackground(new Color(13,71,161));
+				lbls[row][col].setOpaque(true);
+				lbls[row][col].setBackground(new Color(2,119,189)); 
 				add(lbls[row][col]);
 			}
 		}

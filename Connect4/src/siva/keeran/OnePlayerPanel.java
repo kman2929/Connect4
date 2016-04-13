@@ -10,19 +10,20 @@ public class OnePlayerPanel extends JPanel{
 	final int FONT_SIZE = 24;
 	int ROWS = 9, COLS = 7;
 	
-	static JFrame optionFrame = new JFrame ("Connect4");
-	static JFrame winningFrame = new JFrame ("Connect4");
+	static JFrame optionFrame = new JFrame ("Connect4-End Game?");
+	static JFrame winningFrame = new JFrame ("Connect4-Game Over");
+	
+	private Chip[][] board = new Chip[7][7];
 	
 	JButton[] btns = new JButton[7];
 	JLabel[][] lbls = new JLabel[7][7];
-	Chip[][] board = new Chip[7][7];
 	JLabel[] fillerlbls = new JLabel[6];
 	JButton quitbtn;
 	
 	public OnePlayerPanel(){
 
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
-		setPreferredSize(new Dimension(700, 500));
+		setPreferredSize(new Dimension(500, 700));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		
 		quitbtn = new JButton("Quit");
@@ -42,7 +43,7 @@ public class OnePlayerPanel extends JPanel{
 				lbls[row][col] = new JLabel();
 				lbls[row][col].setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
 				lbls[row][col].setOpaque(true);
-				lbls[row][col].setBackground(new Color(13,71,161));
+				lbls[row][col].setBackground(new Color(2,119,189)); 
 				add(lbls[row][col]);
 			}
 		}

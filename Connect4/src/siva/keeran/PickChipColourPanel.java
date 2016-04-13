@@ -20,10 +20,10 @@ public class PickChipColourPanel extends JPanel {
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		setBackground(new Color(2,119,189));
 		
-		lblMsg = new JLabel("First player pick your colour?");
+		lblMsg = new JLabel("First player, pick your chip colour?");
 	    lblMsg.setFont(new Font("Arial", Font.BOLD, 22));
 	    lblMsg.setForeground(Color.WHITE);
-		lblMsg.setBounds(100, 40, 500, 50);
+		lblMsg.setBounds(80, 40, 500, 50);
 		
 		
 		yellowChip = new JButton();
