@@ -5,22 +5,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class PickChipColourPanel extends JPanel {
+public class PickChipColPanel extends JPanel {
 
 	final int FONT_SIZE = 24;
-	
-	Color redCol = new Color(255,235,59);
-	Color yellowCol = new Color(244,67,54);
-	
-	static Color firstCol;
-	static Color secondCol;
 	
 	JButton yellowChip;
 	JButton redChip;
 	JLabel lblMsg;
 	
-	public PickChipColourPanel(){
+	Color yellow;
+	Color red;
+	
+	static Color firstCol;
+	static Color secondCol;
+	
+	public PickChipColPanel(){
 
+		this.red = new Color(225,235,59);
+		this.yellow = new Color(244, 67, 57);
+		
+		
 		setLayout(null);
 		setPreferredSize(new Dimension(500, 200));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
@@ -34,45 +38,45 @@ public class PickChipColourPanel extends JPanel {
 		yellowChip = new JButton();
 		yellowChip.addActionListener(new ButtonListener());
 		yellowChip.setBounds(100, 100, 75, 75);
-		yellowChip.setBackground(redCol);
+		yellowChip.setBackground(yellow);
 		
 		redChip = new JButton();
 		redChip.addActionListener(new ButtonListener());
 		redChip.setBounds(310, 100, 75, 75);
-		redChip.setBackground(yellowCol);
+		redChip.setBackground(red);
 		
 		add(lblMsg);
 		add(yellowChip);
 		add(redChip);
-		
 	}
 	
-	public void setFirstPlayerColour(Color col){
+	public void setFirstColour(Color col){
 		this.firstCol = col;
 	}
 	
-	public static Color getFirstPlayerColour(){
-		return firstCol;
-	}
-	
-	public void setSecondPlayerColour(Color col){
+	public void setSecondColour(Color col){
 		this.secondCol = col;
 	}
 	
-	public static Color getSecondPlayerColour(){
+	public Color getFirstColour(){
+		return firstCol;
+	} 
+	
+	public Color getSecondColour(){
 		return secondCol;
 	}
+	
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
 			if(event.getSource() == yellowChip){
-				setFirstPlayerColour(yellowCol);
-				setSecondPlayerColour(redCol);
+				setFirstColour(yellow);
+				setSecondColour(red);
 				MainMenuPanel.closePickChipColourFrame();
 			}
 			if(event.getSource() == redChip){
-				setFirstPlayerColour(redCol);
-				setSecondPlayerColour(yellowCol);
+				setFirstColour(red);
+				setSecondColour(yellow);
 				MainMenuPanel.closePickChipColourFrame();
 			}
 			

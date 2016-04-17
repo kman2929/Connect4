@@ -87,7 +87,7 @@ public class MainMenuPanel extends JPanel {
 				GameDriver.hideFrame();
 				
 				pickChipColourFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				pickChipColourFrame.getContentPane().add(new PickChipColourPanel());
+				pickChipColourFrame.getContentPane().add(new PickChipColPanel());
 				pickChipColourFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 				pickChipColourFrame.pack();
 				pickChipColourFrame.setLocationRelativeTo(null);
