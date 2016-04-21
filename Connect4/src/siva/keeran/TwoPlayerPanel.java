@@ -159,21 +159,18 @@ public class TwoPlayerPanel extends JPanel{
 	public void setCurrentChipCol(){
 		
 		if(currentChipCol == firstPlayerChipCol){
-			
 			currentChipCol = secondPlayerChipCol;
 		} else {
-			
 			currentChipCol = firstPlayerChipCol;
 		}
 	}
+	
 	public void setCurrentPlayer(){
 		
 		if(currentPlayer.equals(Player.PlayerA)){
-			
 			currentPlayer = Player.PlayerB;
 		} 
 		else {
-			
 			currentPlayer = Player.PlayerA;
 		}
 	}
@@ -189,7 +186,7 @@ public class TwoPlayerPanel extends JPanel{
 	public boolean checkForVerticalCombo(int x, int y, Player player) {
 
 		for (int i = 0; i < 4; i++) {
-			if (!board[x + i][y].getPlayer().equals(player)) {
+			if (!(board[x - i][y].getPlayer().equals(player))) {
 				return false;
 			}
 		} return true;
@@ -203,42 +200,70 @@ public class TwoPlayerPanel extends JPanel{
 		} return true;
 	}
 	
-	/*
-	public boolean checkForDiagonalCombo(int x, int y, Player player, int direction){
-		for (int i = 0; i < 4; i++) {
-			if (!board[x + i][y + direction].getPlayer().equals(player)) {
-				return false;
+	
+	public boolean checkForDiagonalCombo(int x, int y, Player player, int direction) {
+
+		int k = 0;
+		
+		if (direction == 1) {
+			for (int i = 0; i < 4; i++) {
+				if (!board[x - i][y + k].getPlayer().equals(player)) {
+					return false;
+				}
+				k++;
+			}
+		} else {
+			for (int i = 0; i < 4; i++) {
+				if (!board[x - i][y - k].getPlayer().equals(player)) {
+					return false;
+				}
+				k++;
 			}
 		}
 		return true;
 	}
 
-	public void checkForWinningCombos() {
+	public boolean checkForWinningCombos() {
 		for (int col = 0; col < 7; col++) {
 			for (int row = 5; row >= 3; row--) {
-				if (checkForVerticalCombo(row, col, currentPlayer)) {
-					JOptionPane.showMessageDialog(null, "Player has won.");
+				if (checkForVerticalCombo(row, col, Player.PlayerA)) {
+					return true;
+				} else if (checkForVerticalCombo(row, col, Player.PlayerB)) {
+					return true;
 				}
 			}
-		}
+		} 
+
 		for (int row = 5; row >= 0; row--) {
 			for (int col = 0; col <= 3; col++) {
-				if (checkForHoizontalCombo(row, col, currentPlayer)) {
-					JOptionPane.showMessageDialog(null, "Player has won.");
-				}
-
-				else if (checkForDiagonalCombo(row, col, currentPlayer, 1)) {
-					JOptionPane.showMessageDialog(null, "Player has won.");
-				}
-
-				else if (checkForDiagonalCombo(row, col, currentPlayer, -1)) {
-					JOptionPane.showMessageDialog(null, "Player has won.");
+				if (checkForHoizontalCombo(row, col, Player.PlayerA)) {
+					return true;
+				} else if (checkForHoizontalCombo(row, col, Player.PlayerB)) {
+					return true;
 				} 
 			}
-			
 		}
+		for(int col = 0; col<=3; col++){
+			for(int row = 5; row>=3; row--){
+				if (checkForDiagonalCombo(row, col, Player.PlayerA, 1)) {
+					return true;
+				} else if (checkForDiagonalCombo(row, col, Player.PlayerB, 1)) {
+					return true;
+				} 
+			}
+		} 
+		for(int col = 6; col >= 3; col--){
+			for(int row = 5; row >=3; row--){
+				if (checkForDiagonalCombo(row, col, Player.PlayerA, -1)) {
+					return true;
+				} else if (checkForDiagonalCombo(row, col, Player.PlayerB, -1)) {
+					return true;
+				} 
+			}
+		}
+		return false;
 	}
-	*/
+	
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
@@ -246,56 +271,63 @@ public class TwoPlayerPanel extends JPanel{
 			if(event.getSource() == btns[0]){
 				int inputtedcol = 0;
 				drawBoard(inputtedcol);
-				int row = getRow();
-			//	checkForWinningCombos();
+				if(checkForWinningCombos()){
+					JOptionPane.showMessageDialog(null, "yay");
+				}
 
 			}
 			else if(event.getSource() == btns[1]){
 				
 				int inputtedcol = 1;
 				drawBoard(inputtedcol);
-				int row = getRow();
-				//checkForWinningCombos();
+				if(checkForWinningCombos()){
+					JOptionPane.showMessageDialog(null, "yay");
+				}
 				
 			}
 			else if(event.getSource() == btns[2]){
 				
 				int inputtedcol = 2;
 				drawBoard(inputtedcol);
-				int row = getRow();
-				//checkForWinningCombos();
+				if(checkForWinningCombos()){
+					JOptionPane.showMessageDialog(null, "yay");
+				}
 				
 			}
 			else if(event.getSource() == btns[3]){
 				
 				int inputtedcol = 3;
 				drawBoard(inputtedcol);
-				int row = getRow();
-				//checkForWinningCombos();
+				if(checkForWinningCombos()){
+					JOptionPane.showMessageDialog(null, "yay");
+				}
 				
 			}
 			else if(event.getSource() == btns[4]){
 				
 				int inputtedcol = 4;
 				drawBoard(inputtedcol);
-				int row = getRow();
-				//checkForWinningCombos();
+				if(checkForWinningCombos()){
+					JOptionPane.showMessageDialog(null, "yay");
+				}
 				
 			}
 			else if(event.getSource() == btns[5]){
 				
 				int inputtedcol = 5;
 				drawBoard(inputtedcol);
-				int row = getRow();
-				//checkForWinningCombos();
+				if(checkForWinningCombos()){
+					JOptionPane.showMessageDialog(null, "yay");
+				}
 				
 			}
 			else if(event.getSource() == btns[6]){
 				
 				int inputtedcol = 6;
 				drawBoard(inputtedcol);
-				int row = getRow();
-				//checkForWinningCombos();
+				if(checkForWinningCombos()){
+					JOptionPane.showMessageDialog(null, "yay");
+				}
 				
 			}
 			else if(event.getSource() == quitbtn){
@@ -317,11 +349,6 @@ public class TwoPlayerPanel extends JPanel{
 	public static void closeWinningFrame() {
 		winningFrame.dispose();
 	}
-	public static void resetFrame(){
-		
-		
-		
-		
-	}
+	
 
 }
