@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-
 public class TwoPlayerPanel extends JPanel{
 	
 	static JFrame optionFrame = new JFrame("Connect4-End Game?");
@@ -14,6 +13,8 @@ public class TwoPlayerPanel extends JPanel{
 	final int FONT_SIZE = 30;
 	int ROWS = 8, COLS = 7;
 
+	Player winner;
+	
 	private Chip[][] board = new Chip[6][7];
 	
 	JLabel[][] lbls = new JLabel[6][7];
@@ -26,11 +27,8 @@ public class TwoPlayerPanel extends JPanel{
 	Color currentChipCol;
 	Player currentPlayer;
 	
-	int latestRow;
-	
 	public TwoPlayerPanel(Color firstCol, Color secondCol){
 		
-
 		firstPlayerChipCol = firstCol;
 		secondPlayerChipCol = secondCol;
 		
@@ -133,7 +131,6 @@ public class TwoPlayerPanel extends JPanel{
 			board[row][chosencol].setPlayer(currentPlayer);
 			lbls[row][chosencol].setBackground(currentChipCol);
 			
-			setRow(row);
 			setCurrentPlayer();
 			setCurrentChipCol();
 			
@@ -149,7 +146,6 @@ public class TwoPlayerPanel extends JPanel{
 			lbls[row][chosencol].setOpaque(true);
 			lbls[row][chosencol].setBackground(currentChipCol);
 			
-			setRow(row);
 			setCurrentPlayer();
 			setCurrentChipCol();
 		}
@@ -173,14 +169,6 @@ public class TwoPlayerPanel extends JPanel{
 		else {
 			currentPlayer = Player.PlayerA;
 		}
-	}
-	
-	public void setRow(int row){
-		this.latestRow = row;
-	}
-	
-	public int getRow(){
-		return latestRow;
 	}
 	
 	public boolean checkForVerticalCombo(int x, int y, Player player) {
@@ -224,11 +212,14 @@ public class TwoPlayerPanel extends JPanel{
 	}
 
 	public boolean checkForWinningCombos() {
+		
 		for (int col = 0; col < 7; col++) {
 			for (int row = 5; row >= 3; row--) {
 				if (checkForVerticalCombo(row, col, Player.PlayerA)) {
+					winner = Player.PlayerA;
 					return true;
 				} else if (checkForVerticalCombo(row, col, Player.PlayerB)) {
+					winner = Player.PlayerB;
 					return true;
 				}
 			}
@@ -237,8 +228,10 @@ public class TwoPlayerPanel extends JPanel{
 		for (int row = 5; row >= 0; row--) {
 			for (int col = 0; col <= 3; col++) {
 				if (checkForHoizontalCombo(row, col, Player.PlayerA)) {
+					winner = Player.PlayerA;
 					return true;
 				} else if (checkForHoizontalCombo(row, col, Player.PlayerB)) {
+					winner = Player.PlayerB;
 					return true;
 				} 
 			}
@@ -246,8 +239,10 @@ public class TwoPlayerPanel extends JPanel{
 		for(int col = 0; col<=3; col++){
 			for(int row = 5; row>=3; row--){
 				if (checkForDiagonalCombo(row, col, Player.PlayerA, 1)) {
+					winner = Player.PlayerA;
 					return true;
 				} else if (checkForDiagonalCombo(row, col, Player.PlayerB, 1)) {
+					winner = Player.PlayerB;
 					return true;
 				} 
 			}
@@ -255,8 +250,10 @@ public class TwoPlayerPanel extends JPanel{
 		for(int col = 6; col >= 3; col--){
 			for(int row = 5; row >=3; row--){
 				if (checkForDiagonalCombo(row, col, Player.PlayerA, -1)) {
+					winner = Player.PlayerA;
 					return true;
 				} else if (checkForDiagonalCombo(row, col, Player.PlayerB, -1)) {
+					winner = Player.PlayerB;
 					return true;
 				} 
 			}
@@ -349,6 +346,4 @@ public class TwoPlayerPanel extends JPanel{
 	public static void closeWinningFrame() {
 		winningFrame.dispose();
 	}
-	
-
 }

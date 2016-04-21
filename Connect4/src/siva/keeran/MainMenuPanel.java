@@ -121,7 +121,7 @@ public class MainMenuPanel extends JPanel {
 	}
 	public static void createOnePlayerPanel(Color firstCol, Color secondCol){
 		oneplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		oneplayerFrame.getContentPane().add(new OnePlayerPanel());
+		oneplayerFrame.getContentPane().add(new OnePlayerPanel(firstCol, secondCol));
 		oneplayerFrame.pack();
 		oneplayerFrame.setLocationRelativeTo(null);
 		oneplayerFrame.setFocusable(true);
