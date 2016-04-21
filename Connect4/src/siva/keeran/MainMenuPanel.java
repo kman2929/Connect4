@@ -66,34 +66,27 @@ public class MainMenuPanel extends JPanel {
 			
 			if(event.getSource() == btnoneplayer){
 				
-				oneplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				oneplayerFrame.getContentPane().add(new OnePlayerPanel());
-				oneplayerFrame.pack();
-				oneplayerFrame.setLocationRelativeTo(null);
-				oneplayerFrame.setFocusable(true);
-				oneplayerFrame.setResizable(true);
-				oneplayerFrame.setVisible(true);
-				GameDriver.hideFrame();
-			}
-			else if(event.getSource() == btntwoplayer){
-				
-				twoplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				twoplayerFrame.getContentPane().add(new TwoPlayerPanel());
-				twoplayerFrame.pack();
-				twoplayerFrame.setLocationRelativeTo(null);
-				twoplayerFrame.setFocusable(true);
-				twoplayerFrame.setResizable(true);
-				twoplayerFrame.setVisible(true);
-				GameDriver.hideFrame();
-				
 				pickChipColourFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-				pickChipColourFrame.getContentPane().add(new PickChipColPanel());
+				pickChipColourFrame.getContentPane().add(new PickChipColPanel(1));
 				pickChipColourFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 				pickChipColourFrame.pack();
 				pickChipColourFrame.setLocationRelativeTo(null);
 				pickChipColourFrame.setFocusable(true);
 				pickChipColourFrame.setResizable(true);
 				pickChipColourFrame.setVisible(true);
+				GameDriver.hideFrame();
+			}
+			else if(event.getSource() == btntwoplayer){
+				
+				pickChipColourFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				pickChipColourFrame.getContentPane().add(new PickChipColPanel(2));
+				pickChipColourFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+				pickChipColourFrame.pack();
+				pickChipColourFrame.setLocationRelativeTo(null);
+				pickChipColourFrame.setFocusable(true);
+				pickChipColourFrame.setResizable(true);
+				pickChipColourFrame.setVisible(true);
+				GameDriver.hideFrame();
 				
 			}
 			else if(event.getSource() == btninstructions){
@@ -117,6 +110,24 @@ public class MainMenuPanel extends JPanel {
 		
 	}
 	
+	public static void createTwoPlayerPanel(Color firstCol, Color secondCol){
+		twoplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		twoplayerFrame.getContentPane().add(new TwoPlayerPanel(firstCol, secondCol));
+		twoplayerFrame.pack();
+		twoplayerFrame.setLocationRelativeTo(null);
+		twoplayerFrame.setFocusable(true);
+		twoplayerFrame.setResizable(true);
+		twoplayerFrame.setVisible(true);
+	}
+	public static void createOnePlayerPanel(Color firstCol, Color secondCol){
+		oneplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		oneplayerFrame.getContentPane().add(new OnePlayerPanel());
+		oneplayerFrame.pack();
+		oneplayerFrame.setLocationRelativeTo(null);
+		oneplayerFrame.setFocusable(true);
+		oneplayerFrame.setResizable(true);
+		oneplayerFrame.setVisible(true);
+	}
 	public static void hideInstructionFrame() {
 		instructionsFrame.setVisible(false);
 	}
@@ -129,6 +140,8 @@ public class MainMenuPanel extends JPanel {
 	public static void closePickChipColourFrame(){
 		pickChipColourFrame.dispose();
 	}
-	
+	public static void hidePickChipColourFrame(){
+		pickChipColourFrame.setVisible(false);
+	}
 
 }

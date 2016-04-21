@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class PickChipColPanel extends JPanel {
-
+	
 	final int FONT_SIZE = 24;
 	
 	JButton yellowChip;
@@ -16,13 +16,14 @@ public class PickChipColPanel extends JPanel {
 	Color yellow;
 	Color red;
 	
-	static Color firstCol;
-	static Color secondCol;
+	int panelNum;
 	
-	public PickChipColPanel(){
+	public PickChipColPanel(int num){
 
-		this.red = new Color(225,235,59);
-		this.yellow = new Color(244, 67, 57);
+		panelNum = num;
+		
+		red = new Color(225,235,59);
+		yellow = new Color(244, 67, 57);
 		
 		
 		setLayout(null);
@@ -50,34 +51,23 @@ public class PickChipColPanel extends JPanel {
 		add(redChip);
 	}
 	
-	public void setFirstColour(Color col){
-		this.firstCol = col;
-	}
-	
-	public void setSecondColour(Color col){
-		this.secondCol = col;
-	}
-	
-	public Color getFirstColour(){
-		return firstCol;
-	} 
-	
-	public Color getSecondColour(){
-		return secondCol;
-	}
-	
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
 			if(event.getSource() == yellowChip){
-				setFirstColour(yellow);
-				setSecondColour(red);
-				MainMenuPanel.closePickChipColourFrame();
+				if(panelNum == 1){
+					MainMenuPanel.createOnePlayerPanel(yellow, red);
+				} else {
+					MainMenuPanel.createTwoPlayerPanel(yellow, red);
+				} MainMenuPanel.closePickChipColourFrame();
 			}
-			if(event.getSource() == redChip){
-				setFirstColour(red);
-				setSecondColour(yellow);
-				MainMenuPanel.closePickChipColourFrame();
+	
+			else if(event.getSource() == redChip){
+				if(panelNum == 1){
+					MainMenuPanel.createOnePlayerPanel(red, yellow);
+				} else {
+					MainMenuPanel.createTwoPlayerPanel(red, yellow);
+				} MainMenuPanel.closePickChipColourFrame();
 			}
 			
 		}
