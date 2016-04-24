@@ -54,11 +54,14 @@ public class PickChipColPanel extends JPanel {
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
+			MainMenuPanel p = new MainMenuPanel();
 			if(event.getSource() == yellowChip){
 				if(panelNum == 1){
 					MainMenuPanel.createOnePlayerPanel(yellow, red);
 				} else {
-					MainMenuPanel.createTwoPlayerPanel(yellow, red);
+					
+					
+					p.createTwoPlayerPanel(yellow, red);
 				} MainMenuPanel.closePickChipColourFrame();
 			}
 	
@@ -66,7 +69,7 @@ public class PickChipColPanel extends JPanel {
 				if(panelNum == 1){
 					MainMenuPanel.createOnePlayerPanel(red, yellow);
 				} else {
-					MainMenuPanel.createTwoPlayerPanel(red, yellow);
+					p.createTwoPlayerPanel(red, yellow);
 				} MainMenuPanel.closePickChipColourFrame();
 			}
 			

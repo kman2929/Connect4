@@ -15,6 +15,9 @@ public class Chip {
 	public void setPlayer(Player player){
 		this.player = player;
 	}
+	public void setEmpty(){
+		occupied  = false;
+	}
 	public void setOccupied(){
 		occupied = true;
 		

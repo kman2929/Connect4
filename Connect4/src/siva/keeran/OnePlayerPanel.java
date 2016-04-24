@@ -33,8 +33,9 @@ public class OnePlayerPanel extends JPanel{
 		secondPlayerChipCol = secondCol;
 		
 		currentChipCol = firstPlayerChipCol;
-		currentPlayer = Player.PlayerA;
+		currentPlayer = Player.HUMAN;
 		
+		setBackground(Color.LIGHT_GRAY);
 		setLayout(new GridLayout(ROWS, COLS, 0, 0));
 		setPreferredSize(new Dimension(500, 700));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
@@ -112,7 +113,17 @@ public class OnePlayerPanel extends JPanel{
 		}
 		
 	}
-
+	public void createWinningPanel(){
+		
+		winningFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		winningFrame.getContentPane().add(new WinningPanel(winner));
+		winningFrame.pack();
+		winningFrame.setLocationRelativeTo(null);
+		winningFrame.setFocusable(true);
+		winningFrame.setResizable(true);
+		winningFrame.setVisible(true);
+		
+	}
 	public void setCurrentChipCol(){
 		
 		if(currentChipCol == firstPlayerChipCol){
@@ -124,11 +135,11 @@ public class OnePlayerPanel extends JPanel{
 	
 	public void setCurrentPlayer(){
 		
-		if(currentPlayer.equals(Player.PlayerA)){
-			currentPlayer = Player.PlayerB;
+		if(currentPlayer.equals(Player.HUMAN)){
+			currentPlayer = Player.COMPUTER;
 		} 
 		else {
-			currentPlayer = Player.PlayerA;
+			currentPlayer = Player.HUMAN;
 		}
 	}
 	
@@ -185,11 +196,11 @@ public class OnePlayerPanel extends JPanel{
 		
 		for (int col = 0; col < 7; col++) {
 			for (int row = 5; row >= 3; row--) {
-				if (checkForVerticalCombo(row, col, Player.PlayerA)) {
-					winner = Player.PlayerA;
+				if (checkForVerticalCombo(row, col, Player.HUMAN)) {
+					winner = Player.HUMAN;
 					return true;
-				} else if (checkForVerticalCombo(row, col, Player.PlayerB)) {
-					winner = Player.PlayerB;
+				} else if (checkForVerticalCombo(row, col, Player.COMPUTER)) {
+					winner = Player.COMPUTER;
 					return true;
 				}
 			}
@@ -197,53 +208,62 @@ public class OnePlayerPanel extends JPanel{
 
 		for (int row = 5; row >= 0; row--) {
 			for (int col = 0; col <= 3; col++) {
-				if (checkForHoizontalCombo(row, col, Player.PlayerA)) {
-					winner = Player.PlayerA;
+				if (checkForHoizontalCombo(row, col, Player.HUMAN)) {
+					winner = Player.HUMAN;
 					return true;
-				} else if (checkForHoizontalCombo(row, col, Player.PlayerB)) {
-					winner = Player.PlayerB;
+				} else if (checkForHoizontalCombo(row, col, Player.COMPUTER)) {
+					winner = Player.COMPUTER;
 					return true;
 				} 
 			}
 		}
 		for(int col = 0; col<=3; col++){
 			for(int row = 5; row>=3; row--){
-				if (checkForDiagonalCombo(row, col, Player.PlayerA, 1)) {
-					winner = Player.PlayerA;
+				if (checkForDiagonalCombo(row, col, Player.HUMAN, 1)) {
+					winner = Player.HUMAN;
 					return true;
-				} else if (checkForDiagonalCombo(row, col, Player.PlayerB, 1)) {
-					winner = Player.PlayerB;
+				} else if (checkForDiagonalCombo(row, col, Player.COMPUTER, 1)) {
+					winner = Player.COMPUTER;
 					return true;
 				}
 			}
 		}
 		for (int col = 6; col >= 3; col--) {
 			for (int row = 5; row >= 3; row--) {
-				if (checkForDiagonalCombo(row, col, Player.PlayerA, -1)) {
-					winner = Player.PlayerA;
+				if (checkForDiagonalCombo(row, col, Player.HUMAN, -1)) {
+					winner = Player.HUMAN;
 					return true;
-				} else if (checkForDiagonalCombo(row, col, Player.PlayerB, -1)) {
-					winner = Player.PlayerB;
+				} else if (checkForDiagonalCombo(row, col, Player.COMPUTER, -1)) {
+					winner = Player.COMPUTER;
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-
+	public void disableButtons(){
+		for(int x = 0; x < 7; x++){
+			btns[x].setEnabled(false);
+		}
+		quitbtn.setEnabled(false);
+	}
+	
 	private class ButtonListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent event) {
 
 			if (event.getSource() == btns[0]) {
+				
 				int inputtedcol = 0;
 				drawBoard(inputtedcol);
 				if (checkForWinningCombos()) {
-					JOptionPane.showMessageDialog(null, "yay");
+					createWinningPanel();
+					disableButtons();
 				} else {
 					drawBoard(getRandomCol());
 					if (checkForWinningCombos()) {
-						JOptionPane.showMessageDialog(null, "yay");
+						createWinningPanel();
+						disableButtons();
 					}
 				}
 			} else if (event.getSource() == btns[1]) {
@@ -251,11 +271,13 @@ public class OnePlayerPanel extends JPanel{
 				int inputtedcol = 1;
 				drawBoard(inputtedcol);
 				if (checkForWinningCombos()) {
-					JOptionPane.showMessageDialog(null, "yay");
+					createWinningPanel();
+					disableButtons();
 				} else {
 					drawBoard(getRandomCol());
 					if (checkForWinningCombos()) {
-						JOptionPane.showMessageDialog(null, "yay");
+						createWinningPanel();
+						disableButtons();
 					}
 				}
 			} else if (event.getSource() == btns[2]) {
@@ -263,11 +285,13 @@ public class OnePlayerPanel extends JPanel{
 				int inputtedcol = 2;
 				drawBoard(inputtedcol);
 				if (checkForWinningCombos()) {
-					JOptionPane.showMessageDialog(null, "yay");
+					createWinningPanel();
+					disableButtons();
 				} else {
 					drawBoard(getRandomCol());
 					if (checkForWinningCombos()) {
-						JOptionPane.showMessageDialog(null, "yay");
+						createWinningPanel();
+						disableButtons();
 					}
 				}
 			} else if (event.getSource() == btns[3]) {
@@ -275,11 +299,13 @@ public class OnePlayerPanel extends JPanel{
 				int inputtedcol = 3;
 				drawBoard(inputtedcol);
 				if (checkForWinningCombos()) {
-					JOptionPane.showMessageDialog(null, "yay");
+					createWinningPanel();
+					disableButtons();
 				} else {
 					drawBoard(getRandomCol());
 					if (checkForWinningCombos()) {
-						JOptionPane.showMessageDialog(null, "yay");
+						createWinningPanel();
+						disableButtons();
 					}
 				}
 			} else if (event.getSource() == btns[4]) {
@@ -287,11 +313,13 @@ public class OnePlayerPanel extends JPanel{
 				int inputtedcol = 4;
 				drawBoard(inputtedcol);
 				if (checkForWinningCombos()) {
-					JOptionPane.showMessageDialog(null, "yay");
+					createWinningPanel();
+					disableButtons();
 				} else {
 					drawBoard(getRandomCol());
 					if (checkForWinningCombos()) {
-						JOptionPane.showMessageDialog(null, "yay");
+						createWinningPanel();
+						disableButtons();
 					}
 				}
 			} else if (event.getSource() == btns[5]) {
@@ -299,11 +327,13 @@ public class OnePlayerPanel extends JPanel{
 				int inputtedcol = 5;
 				drawBoard(inputtedcol);
 				if (checkForWinningCombos()) {
-					JOptionPane.showMessageDialog(null, "yay");
+					createWinningPanel();
+					disableButtons();
 				} else {
 					drawBoard(getRandomCol());
 					if (checkForWinningCombos()) {
-						JOptionPane.showMessageDialog(null, "yay");
+						createWinningPanel();
+						disableButtons();
 					}
 				}
 			} else if (event.getSource() == btns[6]) {
@@ -311,11 +341,13 @@ public class OnePlayerPanel extends JPanel{
 				int inputtedcol = 6;
 				drawBoard(inputtedcol);
 				if (checkForWinningCombos()) {
-					JOptionPane.showMessageDialog(null, "yay");
+					createWinningPanel();
+					disableButtons();
 				} else {
 					drawBoard(getRandomCol());
 					if (checkForWinningCombos()) {
-						JOptionPane.showMessageDialog(null, "yay");
+						createWinningPanel();
+						disableButtons();
 					}
 				}
 			}

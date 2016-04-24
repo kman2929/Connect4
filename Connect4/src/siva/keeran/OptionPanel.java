@@ -41,10 +41,10 @@ public class OptionPanel extends JPanel{
 		
 		public void actionPerformed(ActionEvent event){
 			if(event.getSource() == btnquit){
+				MainMenuPanel.closeTwoplayerFrame();
+				MainMenuPanel.closeOneplayerFrame();
 				OnePlayerPanel.closeOptionFrame();
 				TwoPlayerPanel.closeOptionFrame();
-				MainMenuPanel.closeOneplayerFrame();
-				MainMenuPanel.closeTwoplayerFrame();
 				GameDriver.appearFrame();
 			}
 			if(event.getSource() == btnresume){

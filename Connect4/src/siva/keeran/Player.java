@@ -1,5 +1,5 @@
 package siva.keeran;
 
 public enum Player {
-	PlayerA, PlayerB, NA
+	PLAYERA, PLAYERB, HUMAN, COMPUTER, NA
 }

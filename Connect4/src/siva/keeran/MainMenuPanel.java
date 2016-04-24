@@ -19,8 +19,8 @@ public class MainMenuPanel extends JPanel {
 	ImageIcon backgroundicon;
 	JLabel backgroundimg;
 	
-	static JFrame oneplayerFrame = new JFrame("Connect4-OnePlayer");
 	static JFrame twoplayerFrame = new JFrame("Connect4-TwoPlayer");
+	static JFrame oneplayerFrame = new JFrame("Connect4-OnePlayer");
 	static JFrame instructionsFrame = new JFrame("Connect4-Instructions");
 	static JFrame pickChipColourFrame = new JFrame("Connect4-Choose Chip Colour");
 
@@ -106,19 +106,20 @@ public class MainMenuPanel extends JPanel {
 			}
 		
 		}
-		
-		
 	}
 	
-	public static void createTwoPlayerPanel(Color firstCol, Color secondCol){
+	public void createTwoPlayerPanel(Color firstCol, Color secondCol){
 		twoplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		twoplayerFrame.getContentPane().add(new TwoPlayerPanel(firstCol, secondCol));
+		JPanel twoplayer = new TwoPlayerPanel(firstCol, secondCol);
+		twoplayerFrame.getContentPane().add(twoplayer);
 		twoplayerFrame.pack();
 		twoplayerFrame.setLocationRelativeTo(null);
 		twoplayerFrame.setFocusable(true);
 		twoplayerFrame.setResizable(true);
 		twoplayerFrame.setVisible(true);
 	}
+	
+	
 	public static void createOnePlayerPanel(Color firstCol, Color secondCol){
 		oneplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		oneplayerFrame.getContentPane().add(new OnePlayerPanel(firstCol, secondCol));
@@ -133,15 +134,15 @@ public class MainMenuPanel extends JPanel {
 	}
 	public static void closeTwoplayerFrame(){
 		twoplayerFrame.dispose();
+		twoplayerFrame.getContentPane().removeAll();
+
 	}
 	public static void closeOneplayerFrame(){
 		oneplayerFrame.dispose();
+		oneplayerFrame.getContentPane().removeAll();
 	}
 	public static void closePickChipColourFrame(){
 		pickChipColourFrame.dispose();
+		pickChipColourFrame.getContentPane().removeAll();
 	}
-	public static void hidePickChipColourFrame(){
-		pickChipColourFrame.setVisible(false);
-	}
-
 }

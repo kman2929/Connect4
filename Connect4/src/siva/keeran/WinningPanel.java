@@ -13,15 +13,30 @@ public class WinningPanel extends JPanel {
 	JLabel lblmsg2;
 	
 	final int FONT_SIZE = 24;
-	public WinningPanel(){
+	
+	public WinningPanel(Player player){
+
+		String winner = "";
 		
+		switch (player) {
+		case PLAYERA:
+			winner = "Player 1";
+			break;
+		case PLAYERB:
+			winner = "Player 2";
+			break;
+		case COMPUTER:
+			winner = "The Computer";
+			break;
+		case HUMAN:
+			winner = "You";
+		}
 		setLayout(null);
 		setPreferredSize(new Dimension(500, 200));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
 		setBackground(new Color(2,119,189));
-		int player = 1;
 		
-		lblmsg1 = new JLabel("Congratulations Player" + player + " !");
+		lblmsg1 = new JLabel(winner + " won, Congradulations!");
 	    lblmsg1.setFont(new Font("Arial", Font.BOLD, 22));
 	    lblmsg1.setForeground(Color.WHITE);
 		lblmsg1.setBounds(125, 60, 500, 50);
