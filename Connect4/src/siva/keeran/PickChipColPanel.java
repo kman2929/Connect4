@@ -62,7 +62,8 @@ public class PickChipColPanel extends JPanel {
 					
 					
 					p.createTwoPlayerPanel(yellow, red);
-				} MainMenuPanel.closePickChipColourFrame();
+				} 
+				MainMenuPanel.closePickChipColourFrame();
 			}
 	
 			else if(event.getSource() == redChip){
@@ -70,7 +71,8 @@ public class PickChipColPanel extends JPanel {
 					MainMenuPanel.createOnePlayerPanel(red, yellow);
 				} else {
 					p.createTwoPlayerPanel(red, yellow);
-				} MainMenuPanel.closePickChipColourFrame();
+				} 
+				MainMenuPanel.closePickChipColourFrame();
 			}
 			
 		}

@@ -116,7 +116,7 @@ public class OnePlayerPanel extends JPanel{
 	public void createWinningPanel(){
 		
 		winningFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		winningFrame.getContentPane().add(new WinningPanel(winner));
+		winningFrame.getContentPane().add(new WinningPanel(winner, 1));
 		winningFrame.pack();
 		winningFrame.setLocationRelativeTo(null);
 		winningFrame.setFocusable(true);

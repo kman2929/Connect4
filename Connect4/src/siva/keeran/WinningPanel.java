@@ -7,15 +7,20 @@ import javax.swing.*;
 
 public class WinningPanel extends JPanel {
 
+	static JFrame pickChipColourFrame = new JFrame("Connect4-Choose Chip Colour");
+	
 	JButton btnquit;
 	JButton btnrematch;
 	JLabel lblmsg1;
 	JLabel lblmsg2;
 	
+	int panelNum;
 	final int FONT_SIZE = 24;
 	
-	public WinningPanel(Player player){
+	public WinningPanel(Player player, int panel){
 
+		panelNum = panel;
+		
 		String winner = "";
 		
 		switch (player) {
@@ -64,6 +69,7 @@ public class WinningPanel extends JPanel {
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
+			
 			if(event.getSource() == btnquit){
 				OnePlayerPanel.closeWinningFrame();
 				TwoPlayerPanel.closeWinningFrame();
@@ -71,9 +77,36 @@ public class WinningPanel extends JPanel {
 				MainMenuPanel.closeTwoplayerFrame();
 				GameDriver.appearFrame();
 			}
-			if(event.getSource() == btnrematch){
-				OnePlayerPanel.closeWinningFrame();
-				TwoPlayerPanel.closeWinningFrame();
+			else if(event.getSource() == btnrematch){
+				if(panelNum==1){
+					MainMenuPanel.closeOneplayerFrame();
+					OnePlayerPanel.closeWinningFrame();
+					
+					pickChipColourFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+					pickChipColourFrame.getContentPane().add(new PickChipColPanel(1));
+					pickChipColourFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+					pickChipColourFrame.pack();
+					pickChipColourFrame.setLocationRelativeTo(null);
+					pickChipColourFrame.setFocusable(true);
+					pickChipColourFrame.setResizable(true);
+					pickChipColourFrame.setVisible(true);
+					
+					
+				} else {
+					MainMenuPanel.closeTwoplayerFrame();
+					TwoPlayerPanel.closeWinningFrame();
+
+					pickChipColourFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+					pickChipColourFrame.getContentPane().add(new PickChipColPanel(2));
+					pickChipColourFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+					pickChipColourFrame.pack();
+					pickChipColourFrame.setLocationRelativeTo(null);
+					pickChipColourFrame.setFocusable(true);
+					pickChipColourFrame.setResizable(true);
+					pickChipColourFrame.setVisible(true);
+					
+				}
+				
 			}
 			
 		}
