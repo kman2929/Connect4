@@ -17,8 +17,12 @@ public class WinningPanel extends JPanel {
 	int panelNum;
 	final int FONT_SIZE = 24;
 	
-	public WinningPanel(Player player, int panel){
+	Color firstPlayerColor, secondPlayerColor;
+	
+	public WinningPanel(Player player, int panel, Color first, Color second){
 
+		firstPlayerColor = first;
+		secondPlayerColor = second;
 		panelNum = panel;
 		
 		String winner = "";
@@ -36,6 +40,7 @@ public class WinningPanel extends JPanel {
 		case HUMAN:
 			winner = "You";
 		}
+		
 		setLayout(null);
 		setPreferredSize(new Dimension(500, 200));
 		setFont(new Font("Arial", Font.BOLD, FONT_SIZE));
@@ -82,29 +87,12 @@ public class WinningPanel extends JPanel {
 					MainMenuPanel.closeOneplayerFrame();
 					OnePlayerPanel.closeWinningFrame();
 					
-					pickChipColourFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-					pickChipColourFrame.getContentPane().add(new PickChipColPanel(1));
-					pickChipColourFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
-					pickChipColourFrame.pack();
-					pickChipColourFrame.setLocationRelativeTo(null);
-					pickChipColourFrame.setFocusable(true);
-					pickChipColourFrame.setResizable(true);
-					pickChipColourFrame.setVisible(true);
-					
-					
+					MainMenuPanel.createOnePlayerPanel(firstPlayerColor, secondPlayerColor);
 				} else {
 					MainMenuPanel.closeTwoplayerFrame();
 					TwoPlayerPanel.closeWinningFrame();
-
-					pickChipColourFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-					pickChipColourFrame.getContentPane().add(new PickChipColPanel(2));
-					pickChipColourFrame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
-					pickChipColourFrame.pack();
-					pickChipColourFrame.setLocationRelativeTo(null);
-					pickChipColourFrame.setFocusable(true);
-					pickChipColourFrame.setResizable(true);
-					pickChipColourFrame.setVisible(true);
 					
+					MainMenuPanel.createTwoPlayerPanel(firstPlayerColor, secondPlayerColor);
 				}
 				
 			}

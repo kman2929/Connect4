@@ -113,10 +113,11 @@ public class OnePlayerPanel extends JPanel{
 		}
 		
 	}
+	
 	public void createWinningPanel(){
 		
 		winningFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		winningFrame.getContentPane().add(new WinningPanel(winner, 1));
+		winningFrame.getContentPane().add(new WinningPanel(winner, 1, firstPlayerChipCol, secondPlayerChipCol));
 		winningFrame.pack();
 		winningFrame.setLocationRelativeTo(null);
 		winningFrame.setFocusable(true);
@@ -132,7 +133,6 @@ public class OnePlayerPanel extends JPanel{
 			currentChipCol = firstPlayerChipCol;
 		}
 	}
-	
 	public void setCurrentPlayer(){
 		
 		if(currentPlayer.equals(Player.HUMAN)){
@@ -158,7 +158,8 @@ public class OnePlayerPanel extends JPanel{
 			if (!(board[x - i][y].getPlayer().equals(player))) {
 				return false;
 			}
-		} return true;
+		} 
+		return true;
 	}
 	
 	public boolean checkForHoizontalCombo(int x, int y, Player player){

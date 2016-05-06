@@ -73,7 +73,5 @@ public class PickChipColPanel extends JPanel {
 			
 			MainMenuPanel.closePickChipColourFrame();
 		}
-		
-
 	}
 }

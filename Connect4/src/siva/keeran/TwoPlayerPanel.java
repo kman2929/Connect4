@@ -227,7 +227,7 @@ public class TwoPlayerPanel extends JPanel{
 	public void createWinningPanel(){
 		
 		winningFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		winningFrame.getContentPane().add(new WinningPanel(winner, 2));
+		winningFrame.getContentPane().add(new WinningPanel(winner, 2, firstPlayerChipCol, secondPlayerChipCol));
 		winningFrame.pack();
 		winningFrame.setLocationRelativeTo(null);
 		winningFrame.setFocusable(true);

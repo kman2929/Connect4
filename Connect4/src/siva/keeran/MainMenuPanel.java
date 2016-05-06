@@ -110,15 +110,13 @@ public class MainMenuPanel extends JPanel {
 	
 	public static void createTwoPlayerPanel(Color firstCol, Color secondCol){
 		twoplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		JPanel twoplayer = new TwoPlayerPanel(firstCol, secondCol);
-		twoplayerFrame.getContentPane().add(twoplayer);
+		twoplayerFrame.getContentPane().add(new TwoPlayerPanel(firstCol, secondCol));
 		twoplayerFrame.pack();
 		twoplayerFrame.setLocationRelativeTo(null);
 		twoplayerFrame.setFocusable(true);
 		twoplayerFrame.setResizable(true);
 		twoplayerFrame.setVisible(true);
-		
-		closePickChipColourFrame();
+	
 	}
 	
 	public static void createOnePlayerPanel(Color firstCol, Color secondCol){
@@ -130,7 +128,6 @@ public class MainMenuPanel extends JPanel {
 		oneplayerFrame.setResizable(true);
 		oneplayerFrame.setVisible(true);
 		
-		closePickChipColourFrame();
 	}
 	
 	public static void hideInstructionFrame() {
