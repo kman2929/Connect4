@@ -5,7 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-
+/**
+ * This class creates a JPanel and creates and adds its components such as 
+ * the JButtons and JLabels. It also responds to the users actions when they 
+ * click on a button. 
+ * 
+ * @author Aaisha Eid and Keeran Siva
+ * @version 1.0
+ */
 public class InstructionsPanel extends JPanel{
 	
 	final int FONT_SIZE = 48;
@@ -13,6 +20,11 @@ public class InstructionsPanel extends JPanel{
 	ImageIcon backgroundicon;
 	JLabel backgroundimg;
 	
+	/**
+	 * Constructor Method
+	 *       -creates the JPanel object
+	 *       -creates and adds the JButtons and JLabels 
+	 */
 	public InstructionsPanel(){
 		
 		setLayout(null);
@@ -34,6 +46,12 @@ public class InstructionsPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * This class allows the user to return back to the main menu panel.
+	 * 
+	 * @author Aaisha Eid and Keeran Siva
+	 * @version 1.0
+	 */
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){

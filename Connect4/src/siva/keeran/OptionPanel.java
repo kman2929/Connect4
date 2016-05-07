@@ -5,11 +5,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * This class creates a JPanel and creates and adds its components such as 
+ * the JButtons and JLabels. It also responds to the users actions when they 
+ * click on a button. 
+ * 
+ * @author Aaisha Eid and Keeran Siva
+ * @version 1.0
+ */
 public class OptionPanel extends JPanel{
+	
 	JButton btnquit;
 	JButton btnresume;
 	JLabel lblmsg;
 	final int FONT_SIZE = 24;
+	
+	/**
+	 * Constructor Method
+	 *       -creates the JPanel object
+	 *       -creates and adds the JButtons and JLabels
+	 */
 	public OptionPanel(){
 		
 		setLayout(null);
@@ -34,9 +49,17 @@ public class OptionPanel extends JPanel{
 		this.add(btnquit);
 		this.add(btnresume);
 		
-		
 	}
 	
+	/**
+	 * Responds to the user's clicks on the buttons.
+	 * This class either quits the game and returns to the main menu panel, or 
+	 * allows the user to resume the current game they are playing depending on
+	 * the button the user chooses to click.
+	 * 
+	 * @author Aaisha Eid and Keeran Siva
+	 * @version 1.0
+	 */
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){

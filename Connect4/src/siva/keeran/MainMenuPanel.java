@@ -1,12 +1,18 @@
 package siva.keeran;
 
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-
+/**
+ * This class creates a JPanel and creates and adds its components such as 
+ * the JButtons and JLabels. It also responds to the users actions when they 
+ * click on a button. 
+ * 
+ * @author Aaisha Eid and Keeran Siva
+ * @version 1.0
+ */
 public class MainMenuPanel extends JPanel {
 	
 	final int FONT_SIZE = 24;
@@ -24,6 +30,11 @@ public class MainMenuPanel extends JPanel {
 	static JFrame instructionsFrame = new JFrame("Connect4-Instructions");
 	static JFrame pickChipColourFrame = new JFrame("Connect4-Choose Chip Colour");
 
+	/**
+	 * Constructor Method
+	 *       -creates the JPanel object
+	 *       -creates and adds the JButtons and JLabels      
+	 */
 	public MainMenuPanel(){
 		
 		setLayout(null);
@@ -60,6 +71,14 @@ public class MainMenuPanel extends JPanel {
 	
 	}
 	
+	/**
+	 * Responds to the user's clicks on the buttons.
+	 * For every button clicked, there is a specific set of code that is executed
+	 * until the user chooses to quit the game.  
+	 * 
+	 * @author Aaisha Eid and Keeran Siva
+	 * @version 1.0
+	 */
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
@@ -108,6 +127,14 @@ public class MainMenuPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Creates the two player JPanel.
+	 * 
+	 * @param firstCol
+	 *      -the colour of the chip of the first player 
+	 * @param secondCol
+	 *      -the colour of the chip of the second player     
+	 */
 	public static void createTwoPlayerPanel(Color firstCol, Color secondCol){
 		twoplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		twoplayerFrame.getContentPane().add(new TwoPlayerPanel(firstCol, secondCol));
@@ -119,6 +146,14 @@ public class MainMenuPanel extends JPanel {
 	
 	}
 	
+	/**
+	 * Creates the one player JPanel. 
+	 * 
+	 * @param firstCol
+	 *      -the colour of the chip of the first player
+	 * @param secondCol
+	 *      -the colour of the chip of the second player
+	 */
 	public static void createOnePlayerPanel(Color firstCol, Color secondCol){
 		oneplayerFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		oneplayerFrame.getContentPane().add(new OnePlayerPanel(firstCol, secondCol));
@@ -130,19 +165,38 @@ public class MainMenuPanel extends JPanel {
 		
 	}
 	
+	/**
+	 * The purpose of this method is to hide the instructions JFrame. 
+	 * 
+	 */
 	public static void hideInstructionFrame() {
 		instructionsFrame.setVisible(false);
 	}
 	
+	/**
+	 * The purpose of this method is to dispose of the two player JPanel and JFrame. 
+	 * 
+	 */
 	public static void closeTwoplayerFrame(){
 		twoplayerFrame.dispose();
 		twoplayerFrame.getContentPane().removeAll();
 
 	}
+	
+	/**
+	 * The purpose of this method is to dispose of the one player JPanel and JFrame. 
+	 * 
+	 */
 	public static void closeOneplayerFrame(){
 		oneplayerFrame.dispose();
 		oneplayerFrame.getContentPane().removeAll();
 	}
+	
+	/**
+	 * The purpose of this method is to dispose of the JFrame and JPanel, where the user
+	 * chooses the first player's chip colour.
+	 * 
+	 */
 	public static void closePickChipColourFrame(){
 		pickChipColourFrame.dispose();
 		pickChipColourFrame.getContentPane().removeAll();

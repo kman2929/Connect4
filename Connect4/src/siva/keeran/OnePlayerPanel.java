@@ -5,6 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * This class creates a JPanel and creates and adds its components such as 
+ * the JButtons and JLabels. When one of the top 7 columns is clicked, the chip
+ * of the corresponding player is added to it occupying the first available space 
+ * from the bottom-up. The class also checks for a winning combining, a row 
+ * of 4, a column of 4 or a diagonal of 4 of the same chip colour and then displays
+ * the winner of the game. In this class, the user is playing against an AI.
+ *
+ * @author Aaisha Eid and Keeran Siva
+ * @version 1.0
+ */
 public class OnePlayerPanel extends JPanel{
 	
 	static JFrame optionFrame = new JFrame("Connect4-End Game?");
@@ -27,6 +38,16 @@ public class OnePlayerPanel extends JPanel{
 	Color currentChipCol;
 	Player currentPlayer;
 	
+	/**
+	 * Constructor Method
+	 *       -creates the JPanel object
+	 *       -creates and adds the JButtons and JLabels  
+	 *       
+	 * @param firstCol
+	 *      -the chip colour of the first player
+	 * @param secondCol
+	 *      -the chip colour of the second player
+	 */
 	public OnePlayerPanel(Color firstCol, Color secondCol){
 
 		firstPlayerChipCol = firstCol;
@@ -77,6 +98,13 @@ public class OnePlayerPanel extends JPanel{
 		} 
 	}
 
+	/**
+	 * Draws the board by filling the first available occupied space from the bottom-up
+	 * in the column clicked by the user. 
+	 * 
+	 * @param chosencol
+	 *      -the button column clicked by the user
+	 */
 	public void drawBoard(int chosencol) {
 		
 		int row = 5;
@@ -114,6 +142,10 @@ public class OnePlayerPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * The purpose of this method is to create the winning panel.
+	 * 
+	 */
 	public void createWinningPanel(){
 		
 		winningFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -125,6 +157,11 @@ public class OnePlayerPanel extends JPanel{
 		winningFrame.setVisible(true);
 		
 	}
+	
+	/**
+	 * This method sets the current chip colour.
+	 * 
+	 */
 	public void setCurrentChipCol(){
 		
 		if(currentChipCol == firstPlayerChipCol){
@@ -133,6 +170,11 @@ public class OnePlayerPanel extends JPanel{
 			currentChipCol = firstPlayerChipCol;
 		}
 	}
+	
+	/**
+	 * This method sets the current player(the computer or the user).
+	 * 
+	 */
 	public void setCurrentPlayer(){
 		
 		if(currentPlayer.equals(Player.HUMAN)){
@@ -143,6 +185,11 @@ public class OnePlayerPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * This method is the code for the AI, which generates a random column. 
+	 * 
+	 * @return randomCol
+	 */
 	public int getRandomCol(){
 		int randomCol = (int)(Math.random()*7);
 		
@@ -152,6 +199,20 @@ public class OnePlayerPanel extends JPanel{
 		return randomCol;
 	}
 	
+	/**
+	 * This method checks for a vertical combination of four of the same 
+	 * colour chip that belongs to one player.
+	 * 
+	 * @param x
+	 *      -an integer value of the row
+	 * @param y
+	 *      -an integer value of the column
+	 * @param player
+	 * @return true
+	 * 		 -if a vertical combination is found
+	 * @return false
+	 *       -if a vertical combination is not found
+	 */
 	public boolean checkForVerticalCombo(int x, int y, Player player) {
 
 		for (int i = 0; i < 4; i++) {
@@ -162,6 +223,20 @@ public class OnePlayerPanel extends JPanel{
 		return true;
 	}
 	
+	/**
+	 * This method checks for a horizontal combination of four of the same 
+	 * colour chip that belongs to one player.
+	 * 
+	 * @param x
+	 *      -an integer value of the row
+	 * @param y
+	 *      -an integer value of the column
+	 * @param player
+	 * @return true
+	 * 		 -if a horizontal combination of four is found
+	 * @return false
+	 *       -if a horizontal combination of four is not found
+	 */
 	public boolean checkForHoizontalCombo(int x, int y, Player player){
 		for (int i = 0; i < 4; i++) {
 			if (!board[x][y+i].getPlayer().equals(player)) {
@@ -170,7 +245,22 @@ public class OnePlayerPanel extends JPanel{
 		} return true;
 	}
 	
-	
+	/**
+	 * This method checks for a diagonal combination of four of the same 
+	 * colour chip that belongs to one player. 
+	 *  
+	 * @param x
+	 *      -an integer value of the row
+	 * @param y
+	 *      -an integer value of the column
+	 * @param player
+	 * @param direction
+	 *      -the direction(right or left) which the board is analyzed
+	 * @return true 
+	 *       -if a diagonal combination of four is found
+	 * @return false
+	 *       -if a diagonal combination of four is not found
+	 */
 	public boolean checkForDiagonalCombo(int x, int y, Player player, int direction) {
 
 		int k = 0;
@@ -193,6 +283,15 @@ public class OnePlayerPanel extends JPanel{
 		return true;
 	}
 
+	/**
+	 * This method checks for winning combinations of 4 of either vertical, 
+	 * horizontal or diagonal of the same chip colour(of the same player). 
+	 * 
+	 * @return true 
+	 *      -if a winning combination is found
+	 * @return false
+	 *      -if a winning combination is not found
+	 */
 	public boolean checkForWinningCombos() {
 		
 		for (int col = 0; col < 7; col++) {
@@ -242,6 +341,12 @@ public class OnePlayerPanel extends JPanel{
 		}
 		return false;
 	}
+	
+	/**
+	 * This method disable all the buttons at the top of the panel and the quit
+	 * button. 
+	 * 
+	 */
 	public void disableButtons(){
 		for(int x = 0; x < 7; x++){
 			btns[x].setEnabled(false);
@@ -249,6 +354,19 @@ public class OnePlayerPanel extends JPanel{
 		quitbtn.setEnabled(false);
 	}
 	
+	/**
+	 * Responds to the user's clicks on the buttons at the top of the panel or 
+	 * the quit button. For every button clicked, there is a specific set of code 
+	 * executed until the user chooses to quit the game.  
+	 * 
+	 * For every column button clicked, the chip of the colour of the current 
+	 * player is placed in the next available space in that column from the 
+	 * bottom-up unless there is no space in that column. It also checks to see if
+	 * a player has won.
+	 * 
+	 * @author Aaisha Eid and Keeran Siva
+	 * @version 1.0
+	 */
 	private class ButtonListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent event) {
@@ -365,12 +483,21 @@ public class OnePlayerPanel extends JPanel{
 			
 		}
 	}
+	
+	/**
+	 * The purpose of this method disposes of the option JFrame.
+	 *
+	 */
 	public static void closeOptionFrame() {
 		optionFrame.dispose();
 	}
+	
+	/**
+	 * The purpose of this method disposes of the winning JFrame.
+	 * 
+	 */
 	public static void closeWinningFrame() {
 		winningFrame.dispose();
 	}
-	
 
 }

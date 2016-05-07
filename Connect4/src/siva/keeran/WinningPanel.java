@@ -5,6 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * This class creates a JPanel and creates and adds its components such as 
+ * the JButtons and JLabels. It also responds to the users actions when they 
+ * click on a button. 
+ * 
+ * @author Aaisha Eid and Keeran Siva
+ * @version 1.0
+ */
 public class WinningPanel extends JPanel {
 
 	static JFrame pickChipColourFrame = new JFrame("Connect4-Choose Chip Colour");
@@ -19,6 +27,21 @@ public class WinningPanel extends JPanel {
 	
 	Color firstPlayerColor, secondPlayerColor;
 	
+	/**
+	 * Constructor method
+	 *       -creates the JPanel object
+	 *       -creates and adds the JButtons and JLabels  
+	 * 
+	 * @param player
+	 *      -the winning player of type Player
+	 * @param panel
+	 *      -the panel number of type int, which indicates the mode the user chose
+	 *      to play in(two player or one player) 
+	 * @param first
+	 *      -the colour of the first player
+	 * @param second
+	 *      -the colour of the second player
+	 */
 	public WinningPanel(Player player, int panel, Color first, Color second){
 
 		firstPlayerColor = first;
@@ -69,8 +92,17 @@ public class WinningPanel extends JPanel {
 		this.add(btnquit);
 		this.add(btnrematch);
 	
-}
+	}
 	
+	/**
+	 * Responds to the user's clicks on the buttons. This class either 
+	 * quits the game and returns to the main menu panel, or allows the user to
+	 * replay the same mode (two player or one player) depending on the button
+	 * the user chooses to click.
+	 *   
+	 * @author Aaisha Eid and Keeran Siva
+	 * @version 1.0
+	 */
 	private class ButtonListener implements ActionListener {
 		
 		public void actionPerformed(ActionEvent event){
